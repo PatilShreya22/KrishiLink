@@ -939,7 +939,7 @@ def set_language(lang_code):
     if lang_code in app.config['BABEL_SUPPORTED_LOCALES']:
         resp = make_response(redirect(request.referrer or url_for('home')))
         # cookie valid for 30 days
-        resp.set_cookie('lang', lang_code, max_age=30*24*60*60)
+        resp.set_cookie('lang', lang_code, max_age=30*24*60*60, secure=True, samesite='Lax')
         return resp
     return redirect(request.referrer or url_for('home'))
 
