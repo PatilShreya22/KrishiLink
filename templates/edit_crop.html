@@ -1,0 +1,284 @@
+<!-- templates/edit_crop.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Crop | KrishiLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .page-title {
+            color: #2e7d32;
+            font-weight: 700;
+        }
+
+        .btn-success {
+            background-color: #2e7d32;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #256c28;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2e7d32">
+    <div class="container">
+        <!-- Brand with logo -->
+        <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+            <img
+                src="{{ url_for('static', filename='images/logo.png') }}"
+                alt="{{ _('KrishiLink Logo') }}"
+                height="70"
+                class="me-2"
+            />
+            <span class="fw-bold text-white">{{ _('KrishiLink') }}</span>
+        </a>
+
+        <!-- Toggle button for mobile -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="{{ _('Toggle navigation') }}"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Right-side elements -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center">
+                
+                <!-- Wallet Balance -->
+                <li class="nav-item mb-2 me-2">
+                    <a
+                        href="#"
+                        class="btn btn-light border rounded-pill d-flex align-items-center px-3 py-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#walletModal"
+                        style="font-weight: 500; color: #2e7d32"
+                    >
+                        💰
+                        <span class="ms-1">₹{{ "%.2f"|format(user.wallet) }}</span>
+                    </a>
+                </li>
+
+                <!-- Notifications -->
+                <li class="nav-item dropdown mb-2 me-2">
+                    <a
+                        class="nav-link position-relative"
+                        href="#"
+                        id="notificationsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        🔔 
+                        {% set unread_count = notifications | selectattr("is_read","equalto",False) | list | length %} 
+                        {% if unread_count > 0 %}
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ unread_count }}
+                            </span>
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown" style="min-width: 300px">
+                        {% if notifications %}
+                            {% for notif in notifications[:5] %}
+                                <li class="dropdown-item {% if not notif.is_read %}fw-bold{% endif %}">
+                                    {{ notif.message }}<br />
+                                    <small class="text-muted">{{ notif.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                                </li>
+                            {% endfor %}
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <a class="dropdown-item text-center" href="{{ url_for('notifications') }}">{{ _('View All') }}</a>
+                            </li>
+                        {% else %}
+                            <li class="dropdown-item text-muted">{{ _('No notifications') }}</li>
+                        {% endif %}
+                    </ul>
+                </li>
+
+                <!-- Home Link pointing to Farmer Dashboard -->
+                <li class="nav-item mb-2 me-2">
+                    <a class="btn btn-outline-light" href="{{ url_for('farmer_dashboard') }}">
+                        🏠 {{ _('Home') }}
+                    </a>
+                </li>
+
+                <!-- Language Dropdown -->
+                <li class="nav-item dropdown mb-2 me-2">
+                    <a
+                        class="btn btn-outline-light dropdown-toggle"
+                        href="#"
+                        id="languageDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        🌐 {{ _('Languages') }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('set_language', lang_code='en') }}">{{ _('English') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('set_language', lang_code='hi') }}">{{ _('Hindi') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('set_language', lang_code='mr') }}">{{ _('Marathi') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- Profile image with dropdown -->
+                <li class="nav-item dropdown mb-2 me-2">
+                    <a
+                        class="nav-link dropdown-toggle d-flex align-items-center"
+                        href="#"
+                        id="profileDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        <img
+                            src="{{ url_for('static', filename=user.profile_image if user.profile_image else 'default_picture.png') }}"
+                            class="rounded-circle me-1"
+                            width="40"
+                            height="40"
+                            alt="{{ _('Profile') }}"
+                        />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('complete_profile') }}">{{ _('Edit Profile') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">{{ _('Logout') }}</a></li>
+                        <li>
+                            <form id="removeImageForm" action="{{ url_for('remove_profile_image') }}" method="POST" style="display: inline">
+                                <button type="button" class="dropdown-item text-danger" onclick="confirmImageRemoval()">
+                                    {{ _('Remove Profile Image') }}
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Edit Crop Form -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center page-title mb-4">{{ _('Edit Crop') }}</h3>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="crop_name" class="form-label">{{ _('Crop Name') }}</label>
+                            <input type="text" class="form-control" name="crop_name" value="{{ crop.crop_name }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">{{ _('Quantity (in Kg)') }}</label>
+                            <input type="number" class="form-control" name="quantity" value="{{ crop.quantity }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">{{ _('Price (₹/Kg)') }}</label>
+                            <input type="number" class="form-control" name="price" value="{{ crop.price }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="harvest_date" class="form-label">{{ _('Harvest Date') }}</label>
+                            <input type="date" class="form-control" name="harvest_date" value="{{ crop.harvest_date }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">{{ _('Description / Expectation') }}</label>
+                            <textarea class="form-control" name="description" rows="3">{{ crop.description }}</textarea>
+                        </div>
+
+                        <!-- Image Upload -->
+                        <div class="mb-3">
+                            <label for="image" class="form-label">{{ _('Crop Image') }}</label>
+                            <input type="file" class="form-control" name="image" id="image" accept="image/*" onchange="previewImage(event)">
+                        </div>
+
+                        <!-- Current Image Preview -->
+                        {% if crop.image %}
+                        <div class="mb-3 text-center">
+                            <label class="form-label">{{ _('Current Crop Image') }}</label><br>
+                            <img id="imagePreview" src="{{ url_for('static', filename=crop.image) }}" alt="{{ _('Current Crop Image') }}" class="img-thumbnail" style="max-width: 200px;">
+                        </div>
+                        {% else %}
+                        <div class="mb-3 text-center">
+                            <img id="imagePreview" src="" alt="{{ _('Image Preview') }}" class="img-thumbnail d-none" style="max-width: 200px;">
+                        </div>
+                        {% endif %}
+
+                        <div class="mb-4">
+                            <label for="status" class="form-label">{{ _('Status') }}</label>
+                            <select class="form-select" name="status" id="status" {% if sold %}disabled{% endif %} required>
+                                <option value="available" {% if crop.status == "available" %}selected{% endif %}>{{ _('Available') }}</option>
+                                <option value="not_available" {% if crop.status == "not_available" %}selected{% endif %}>{{ _('Not Available') }}</option>
+                                <option value="sold" {% if crop.status == "sold" %}selected{% endif %}>{{ _('Sold') }}</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="delivery_method" class="form-label">{{ _('Delivery Method') }}</label>
+                            <select class="form-select" name="delivery_method" required>
+                                <option value="farmer_delivers" {% if crop.delivery_method == "farmer_delivers" %}selected{% endif %}>{{ _('Farmer Delivers') }}</option>
+                                <option value="buyer_pickup" {% if crop.delivery_method == "buyer_pickup" %}selected{% endif %}>{{ _('Buyer Pickup') }}</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">{{ _('Update Crop') }}</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER -->
+        <footer class="text-center text-white bg-dark py-2 mt-5">
+            © 2025 {{ _('KrishiLink. All Rights Reserved.') }}
+        </footer>
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function previewImage(event) {
+    const preview = document.getElementById('imagePreview');
+    preview.src = URL.createObjectURL(event.target.files[0]);
+    preview.classList.remove('d-none');
+}
+</script>
+</body>
+</html>

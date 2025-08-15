@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ _('Complete Profile') }} | {{ _('KrishiLink') }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .btn-success {
+            background-color: #2e7d32;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #256c28;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2e7d32;">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ _('KrishiLink Logo') }}" height="70" class="me-2">
+            <span class="fw-bold text-white">{{ _('KrishiLink') }}</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="{{ _('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="btn btn-outline-light dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        🌐 {{ _('Languages') }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('set_language', lang_code='en') }}">{{ _('English') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('set_language', lang_code='hi') }}">{{ _('हिन्दी') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('set_language', lang_code='mr') }}">{{ _('मराठी') }}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Profile Form -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center text-success mb-4">{{ _('Complete Your Profile') }}</h3>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label class="form-label">{{ _('Phone Number') }}</label>
+                            <input type="tel" name="phone" class="form-control" value="{{ user.phone or '' }}" pattern="\d{10}" required>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="mb-3">
+                            <label class="form-label">{{ _('Full Address') }}</label>
+                            <input type="text" id="locationField" name="location" class="form-control mb-2"
+                                placeholder="{{ _('e.g., Lane 2, Hiranandani, Thane West, Maharashtra') }}" value="{{ user.location or '' }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{{ _('Pincode') }}</label>
+                            <input type="text" name="pincode" class="form-control"
+                                pattern="\d{6}" placeholder="{{ _('e.g., 400607') }}" value="{{ user.pincode or '' }}">
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation()">
+                            {{ _('Use GPS to Fill Location') }}
+                        </button>
+
+                        <!-- Profile Image -->
+                        <div class="mb-3">
+                            <label class="form-label">{{ _('Upload Your Photo') }}</label>
+                            <input type="file" name="profile_image" class="form-control" accept="image/*" onchange="previewImage(event)">
+                        </div>
+
+                        <!-- Image Preview -->
+                        <div class="mb-3 text-center">
+                            <img id="preview" src="#" alt="{{ _('Image Preview') }}" class="img-thumbnail d-none" style="max-height: 200px;">
+                        </div>
+
+                        <!-- Farmer Fields -->
+                        {% if user.role == 'farmer' %}
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Bank Account Number') }}</label>
+                                <input type="text" name="bank_account" class="form-control"
+                                    value="{{ user.bank_account or '' }}"
+                                    pattern="\d{9,18}" title="{{ _('Bank account number must be 9 to 18 digits') }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Short Bio / About You') }}</label>
+                                <textarea name="bio" class="form-control" rows="3" placeholder="{{ _('I am a farmer from Pune, growing organic vegetables for 10 years.') }}">{{ user.bio or '' }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Land Size (acres)') }}</label>
+                                <input type="number" name="land_size" class="form-control" value="{{ user.land_size or 0 }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Farm Type') }}</label>
+                                <select name="farm_type" class="form-select" required>
+                                    <option value="" disabled selected>{{ _('Select type') }}</option>
+                                    <option value="Irrigated" {% if user.farm_type == 'Irrigated' %}selected{% endif %}>{{ _('Irrigated') }}</option>
+                                    <option value="Rainfed" {% if user.farm_type == 'Rainfed' %}selected{% endif %}>{{ _('Rainfed') }}</option>
+                                    <option value="Plantation" {% if user.farm_type == 'Plantation' %}selected{% endif %}>{{ _('Plantation') }}</option>
+                                    <option value="Horticulture" {% if user.farm_type == 'Horticulture' %}selected{% endif %}>{{ _('Horticulture') }}</option>
+                                    <option value="Organic" {% if user.farm_type == 'Organic' %}selected{% endif %}>{{ _('Organic') }}</option>
+                                </select>
+                            </div>
+
+                        {% elif user.role == 'buyer' %}
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Company Name') }}</label>
+                                <input type="text" name="company_name" class="form-control" value="{{ user.company_name or '' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Business Type') }}</label>
+                                <select name="business_type" class="form-select" required>
+                                    <option value="" disabled selected>{{ _('Select business type') }}</option>
+                                    <option value="Wholesaler" {% if user.business_type == 'Wholesaler' %}selected{% endif %}>{{ _('Wholesaler') }}</option>
+                                    <option value="Retailer" {% if user.business_type == 'Retailer' %}selected{% endif %}>{{ _('Retailer') }}</option>
+                                    <option value="Exporter" {% if user.business_type == 'Exporter' %}selected{% endif %}>{{ _('Exporter') }}</option>
+                                    <option value="Manufacturer" {% if user.business_type == 'Manufacturer' %}selected{% endif %}>{{ _('Manufacturer') }}</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Preferred Crops') }}</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="preferred_crops" value="Wheat" {% if 'Wheat' in (user.preferred_crops or '').split(',') %}checked{% endif %}>
+                                    <label class="form-check-label">{{ _('Wheat') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="preferred_crops" value="Rice" {% if 'Rice' in (user.preferred_crops or '').split(',') %}checked{% endif %}>
+                                    <label class="form-check-label">{{ _('Rice') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="preferred_crops" value="Maize" {% if 'Maize' in (user.preferred_crops or '').split(',') %}checked{% endif %}>
+                                    <label class="form-check-label">{{ _('Maize') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="preferred_crops" value="Tomato" {% if 'Tomato' in (user.preferred_crops or '').split(',') %}checked{% endif %}>
+                                    <label class="form-check-label">{{ _('Tomato') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="preferred_crops" value="Potato" {% if 'Potato' in (user.preferred_crops or '').split(',') %}checked{% endif %}>
+                                    <label class="form-check-label">{{ _('Potato') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="preferred_crops" value="Onion" {% if 'Onion' in (user.preferred_crops or '').split(',') %}checked{% endif %}>
+                                    <label class="form-check-label">{{ _('Onion') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">{{ _('Other Crops (comma-separated)') }}</label>
+                                <input type="text" name="other_crops" class="form-control" placeholder="{{ _('Enter crops not listed above') }}">
+                            </div>
+                        {% endif %}
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-success w-100">{{ _('Submit') }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER -->
+        <footer class="text-center text-white bg-dark py-2 mt-5">
+            © 2025 {{ _('KrishiLink. All Rights Reserved.') }}
+        </footer>
+
+<!-- JS: Bootstrap + Location + Image Preview -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            async function (position) {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+
+                console.log("Latitude:", lat, "Longitude:", lon);
+
+                const apiKey = "d88c9bf77f934a8f8dc334ed61a5f8d3"; // OpenCage Key
+
+                try {
+                    const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${apiKey}`);
+                    const data = await response.json();
+
+                    console.log("Geocode response:", data);
+
+                    if (data.results && data.results.length > 0) {
+                        const result = data.results[0];
+                        const address = result.formatted;
+                        const components = result.components;
+
+                        document.getElementById('locationField').value = address;
+
+                        // ✅ Try to extract pincode / postal code
+                        if (components.postcode) {
+                            document.querySelector('input[name="pincode"]').value = components.postcode;
+                        } else {
+                            console.warn("Pincode not found in response");
+                        }
+                    } else {
+                        document.getElementById('locationField').value = `Lat: ${lat}, Lng: ${lon}`;
+                        alert("📍 Could not fetch formatted address.");
+                    }
+                } catch (error) {
+                    console.error("Error fetching geocode:", error);
+                    alert("❌ Failed to fetch address.");
+                    document.getElementById('locationField').value = `Lat: ${lat}, Lng: ${lon}`;
+                }
+            },
+            function (error) {
+                console.error("Geolocation error:", error);
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("❌ Permission denied. Please allow GPS access.");
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert("❌ Position unavailable.");
+                        break;
+                    case error.TIMEOUT:
+                        alert("❌ Location request timed out.");
+                        break;
+                    default:
+                        alert("❌ Unknown error.");
+                }
+            }
+        );
+    } else {
+        alert("❌ Geolocation not supported.");
+    }
+}
+
+
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('preview');
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none');
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+</body>
+</html>

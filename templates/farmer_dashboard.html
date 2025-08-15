@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Farmer Dashboard | KrishiLink</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="bg-light">
+        <!-- NAVBAR -->
+        <nav
+            class="navbar navbar-expand-lg navbar-dark"
+            style="background-color: #2e7d32"
+        >
+            <div class="container">
+                <!-- Brand with logo -->
+                <a
+                    class="navbar-brand d-flex align-items-center"
+                    href="{{ url_for('home') }}"
+                >
+                    <img
+                        src="{{ url_for('static', filename='images/logo.png') }}"
+                        alt="{{ _('KrishiLink Logo') }}"
+                        height="70"
+                        class="me-2"
+                    />
+                    <span class="fw-bold text-white"
+                        >{{ _('KrishiLink') }}</span
+                    >
+                </a>
+
+                <!-- Toggle button for mobile -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="{{ _('Toggle navigation') }}"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Right-side elements -->
+                <div
+                    class="collapse navbar-collapse justify-content-end"
+                    id="navbarNav"
+                >
+                    <ul class="navbar-nav align-items-center">
+                        <!-- Wallet Balance -->
+                        <li class="nav-item mb-2 me-2">
+                            <a
+                                href="#"
+                                class="btn btn-light border rounded-pill d-flex align-items-center px-3 py-1"
+                                data-bs-toggle="modal"
+                                data-bs-target="#walletModal"
+                                style="font-weight: 500; color: #2e7d32"
+                            >
+                                💰
+                                <span class="ms-1"
+                                    >₹{{ "%.2f"|format(user.wallet) }}</span
+                                >
+                            </a>
+                        </li>
+
+                        <!-- Notifications -->
+                        <li class="nav-item dropdown mb-2 me-2">
+                            <a
+                                class="nav-link position-relative"
+                                href="#"
+                                id="notificationsDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                🔔 {% set unread_count = notifications |
+                                selectattr("is_read", "equalto", False) | list |
+                                length %} {% if unread_count > 0 %}
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                >
+                                    {{ unread_count }}
+                                </span>
+                                {% endif %}
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="notificationsDropdown"
+                                style="min-width: 300px"
+                            >
+                                {% if notifications %} {% for notif in
+                                notifications[:5] %}
+                                <li
+                                    class="dropdown-item {% if not notif.is_read %}fw-bold{% endif %}"
+                                >
+                                    {{ notif.message }}<br />
+                                    <small class="text-muted"
+                                        >{{ notif.created_at.strftime('%Y-%m-%d
+                                        %H:%M') }}</small
+                                    >
+                                </li>
+                                {% endfor %}
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a
+                                        class="dropdown-item text-center"
+                                        href="{{ url_for('notifications') }}"
+                                        >{{ _('View All') }}</a
+                                    >
+                                </li>
+                                {% else %}
+                                <li class="dropdown-item text-muted">
+                                    {{ _('No notifications') }}
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                        <!-- Home Link pointing to Farmer Dashboard -->
+                        <li class="nav-item mb-2 me-2">
+                            <a
+                                class="btn btn-outline-light"
+                                href="{{ url_for('farmer_dashboard') }}"
+                            >
+                                🏠 {{ _('Home') }}
+                            </a>
+                        </li>
+
+                        <!-- Language Dropdown -->
+                        <li class="nav-item dropdown mb-2 me-2">
+                            <a
+                                class="btn btn-outline-light dropdown-toggle"
+                                href="#"
+                                id="languageDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                🌐 {{ _('Languages') }}
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="languageDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='en') }}"
+                                        >{{ _('English') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='hi') }}"
+                                        >{{ _('Hindi') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='mr') }}"
+                                        >{{ _('Marathi') }}</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Profile image with dropdown -->
+                        <li class="nav-item dropdown mb-2 me-2">
+                            <a
+                                class="nav-link dropdown-toggle d-flex align-items-center"
+                                href="#"
+                                id="profileDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <img
+                                    src="{{ url_for('static', filename=user.profile_image if user.profile_image else 'default_picture.png') }}"
+                                    class="rounded-circle me-1"
+                                    width="40"
+                                    height="40"
+                                    alt="{{ _('Profile') }}"
+                                />
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="profileDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('complete_profile') }}"
+                                        >{{ _('Edit Profile') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('logout') }}"
+                                        >{{ _('Logout') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <form
+                                        id="removeImageForm"
+                                        action="{{ url_for('remove_profile_image') }}"
+                                        method="POST"
+                                        style="display: inline"
+                                    >
+                                        <button
+                                            type="button"
+                                            class="dropdown-item text-danger"
+                                            onclick="confirmImageRemoval()"
+                                        >
+                                            {{ _('Remove Profile Image') }}
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Wallet Modal -->
+        <div
+            class="modal fade"
+            id="walletModal"
+            tabindex="-1"
+            aria-labelledby="walletModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div
+                        class="modal-header"
+                        style="background-color: #2e7d32; color: white"
+                    >
+                        <h5 class="modal-title" id="walletModalLabel">
+                            {{ _('Your Wallet') }}
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close btn-close-white"
+                            data-bs-dismiss="modal"
+                            aria-label="{{ _('Close') }}"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <strong>{{ _('Current Balance:') }}</strong> ₹{{
+                            "%.2f"|format(user.wallet) }}
+                        </p>
+                        {% if user.role == 'buyer' %}
+                        <form action="{{ url_for('add_money') }}" method="POST">
+                            <div class="mb-3">
+                                <label for="amount" class="form-label"
+                                    >{{ _('Add Amount') }}</label
+                                >
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="amount"
+                                    name="amount"
+                                    min="1"
+                                    required
+                                />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="upi_id" class="form-label"
+                                    >{{ _('UPI ID') }}</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="upi_id"
+                                    name="upi_id"
+                                    placeholder="{{ _('example@upi') }}"
+                                    required
+                                />
+                            </div>
+
+                            <button type="submit" class="btn btn-success">
+                                {{ _('Add Money') }}
+                            </button>
+                        </form>
+                        {% else %}
+                        <p>
+                            {{ _('💡 You can see payments here after selling
+                            crops.') }}
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTAINER -->
+        <div class="container mt-4">
+            <!-- Weather Info -->
+            {% if weather_info %}
+            <div
+                class="alert alert-info d-flex align-items-center justify-content-between"
+            >
+                <div>
+                    <h5>
+                        🌤 {{ _('Current Weather in') }} {{ weather_info.city }}
+                        ({{ user.location }})
+                    </h5>
+                    <p class="mb-1">
+                        <strong>{{ _('Temperature:') }}</strong> {{
+                        weather_info.temp }} °C
+                    </p>
+                    <p class="mb-1">
+                        <strong>{{ _('Feels Like:') }}</strong> {{
+                        weather_info.feels_like }} °C
+                    </p>
+                    <p class="mb-1">
+                        <strong>{{ _('Humidity:') }}</strong> {{
+                        weather_info.humidity }}%
+                    </p>
+                    <p class="mb-1">
+                        <strong>{{ _('Wind Speed:') }}</strong> {{
+                        weather_info.wind_speed }} m/s
+                    </p>
+                    <p class="mb-0">
+                        <strong>{{ _('Condition:') }}</strong> {{
+                        weather_info.description }}
+                    </p>
+                </div>
+                <img
+                    src="http://openweathermap.org/img/wn/{{ weather_info.icon }}@2x.png"
+                    alt="{{ _('Weather Icon') }}"
+                />
+            </div>
+            {% endif %}
+
+            <!-- Weather Alert -->
+            {% if weather_alert_msg %}
+            <div class="alert alert-warning">
+                <strong>⚠ {{ _('Weather Alert:') }}</strong> {{
+                weather_alert_msg }}
+            </div>
+            {% endif %}
+
+            <!-- Crop Alerts -->
+            {% if crop_alerts %}
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    {% for alert in crop_alerts %}
+                    <li>{{ alert }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- Add Crop Button -->
+            <div class="d-flex justify-content-between mb-3">
+                <h4>{{ _('Your Crops') }}</h4>
+                <a href="{{ url_for('add_crop') }}" class="btn btn-success">
+                    + {{ _('Add Crop') }}
+                </a>
+            </div>
+
+            <!-- Crop Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle">
+                    <thead class="table-success">
+                        <tr>
+                            <th>{{ _('Crop') }}</th>
+                            <th>{{ _('Quantity (Kg)') }}</th>
+                            <th>{{ _('Price (₹/Kg)') }}</th>
+                            <th>{{ _('Harvest Date') }}</th>
+                            <th>{{ _('Status') }}</th>
+                            <th>{{ _('Actions') }}</th>
+                            <th>{{ _('Buyers') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for crop in crops %}
+                        <tr>
+                            <td>{{ crop.crop_name }}</td>
+                            <td>{{ crop.quantity }}</td>
+                            <td>₹{{ crop.price }}</td>
+                            <td>{{ crop.harvest_date }}</td>
+                            <td>
+                                {% if crop.status == 'available' %}
+                                <span class="badge bg-success"
+                                    >{{ _('Available') }}</span
+                                >
+                                {% elif crop.status == 'sold' %}
+                                <span class="badge bg-danger"
+                                    >{{ _('Sold') }}</span
+                                >
+                                {% else %}
+                                <span class="badge bg-secondary"
+                                    >{{ crop.status|capitalize }}</span
+                                >
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if crop.status != 'sold' %}
+                                <a
+                                    href="{{ url_for('edit_crop', crop_id=crop.id) }}"
+                                    class="btn btn-warning btn-sm me-1"
+                                >
+                                    ✏ {{ _('Edit') }}
+                                </a>
+                                {% else %}
+                                <button
+                                    class="btn btn-warning btn-sm me-1"
+                                    disabled
+                                >
+                                    ✏ {{ _('Edit') }}
+                                </button>
+                                {% endif %}
+                                <a
+                                    href="{{ url_for('delete_crop', crop_id=crop.id) }}"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('{{ _('Are you sure you want to delete this crop?') }}');"
+                                >
+                                    🗑 {{ _('Delete') }}
+                                </a>
+                            </td>
+                            <td>
+                                {% if crop.status == 'sold' %} {% set approved_orders = orders_by_crop.get(crop.id, []) 
+     | selectattr('status', 'in', ['approved', 'cod_approved', 'confirmed']) | list %}
+ {% if approved_orders
+                                %} {% for order in approved_orders %} {% if
+                                order.user %}
+                                <div
+                                    class="buyer-profile d-flex align-items-center mb-1"
+                                >
+                                    <img
+                                        src="{{ url_for('static', filename=order.user.profile_image or 'uploads/default_picture.jpg') }}"
+                                        alt="{{ _('Buyer') }}"
+                                        class="rounded-circle me-2"
+                                        width="40"
+                                        height="40"
+                                    />
+                                    <div>
+                                        <a
+                                            href="{{ url_for('buyer_profile', buyer_id=order.user.id) }}"
+                                            class="text-decoration-none"
+                                        >
+                                            <strong
+                                                >{{ order.user.name }}</strong
+                                            > </a
+                                        ><br />
+                                        <small class="text-muted"
+                                            >{{ order.user.phone }}</small
+                                        >
+                                    </div>
+                                </div>
+                                {% endif %} {% endfor %} {% else %}
+                                <span class="text-muted"
+                                    >{{ _('Buyer info not available') }}</span
+                                >
+                                {% endif %} {% else %}
+                                <span class="text-muted"
+                                    >{{ _('Not sold yet') }}</span
+                                >
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                {{ _('No crops added yet.') }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <h4 class="mt-5">{{ _('Pending Cash on Delivery Orders') }}</h4>
+                <div class="table-responsive">
+                    <table
+                        class="table table-bordered table-striped align-middle"
+                    >
+                        <thead class="table-warning">
+                            <tr>
+                                <th>{{ _('Order ID') }}</th>
+                                <th>{{ _('Crop') }}</th>
+                                <th>{{ _('Quantity') }}</th>
+                                <th>{{ _('Total Price') }}</th>
+                                <th>{{ _('Buyer') }}</th>
+                                <th>{{ _('Order Date') }}</th>
+                                <th>{{ _('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in cod_orders %}
+                            <tr>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.crop.crop_name }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>₹{{ order.total_price }}</td>
+                                <td>
+                                    <div
+                                        class="buyer-profile d-flex align-items-center mb-1"
+                                    >
+                                        <img
+                                            src="{{ url_for('static', filename=order.user.profile_image or 'uploads/default_picture.jpg') }}"
+                                            alt="{{ _('Buyer') }}"
+                                            class="rounded-circle me-2"
+                                            width="40"
+                                            height="40"
+                                        />
+                                        <div>
+                                            <a
+                                                href="{{ url_for('buyer_profile', buyer_id=order.user.id) }}"
+                                                class="text-decoration-none"
+                                            >
+                                                <strong
+                                                    >{{ order.user.name
+                                                    }}</strong
+                                                > </a
+                                            ><br />
+                                            <small class="text-muted"
+                                                >{{ order.user.phone }}</small
+                                            >
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ order.order_date.strftime('%Y-%m-%d
+                                    %H:%M') }}
+                                </td>
+                                <td>
+                                    <form
+                                        action="{{ url_for('cod_approve', order_id=order.id) }}"
+                                        method="POST"
+                                        style="display: inline-block"
+                                    >
+                                        <button
+                                            type="submit"
+                                            class="btn btn-success btn-sm"
+                                        >
+                                            {{ _('Approve') }}
+                                        </button>
+                                    </form>
+                                    <form
+                                        action="{{ url_for('cod_reject', order_id=order.id) }}"
+                                        method="POST"
+                                        style="display: inline-block"
+                                    >
+                                        <button
+                                            type="submit"
+                                            class="btn btn-danger btn-sm"
+                                        >
+                                            {{ _('Reject') }}
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    {{ _('No pending orders.') }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-white bg-dark py-2 mt-5">
+            © 2025 {{ _('KrishiLink. All Rights Reserved.') }}
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function confirmImageRemoval() {
+                if (
+                    confirm(
+                        'Are you sure you want to remove your profile image?'
+                    )
+                ) {
+                    fetch(document.getElementById('removeImageForm').action, {
+                        method: 'POST',
+                    }).then((response) => {
+                        if (response.ok) {
+                            // Update the profile image on the same page
+                            document.querySelector('#profileDropdown img').src =
+                                '/static/uploads/profile_pics/default_profile.png';
+                        } else {
+                            alert('Something went wrong.');
+                        }
+                    });
+                }
+            }
+        </script>
+    </body>
+</html>

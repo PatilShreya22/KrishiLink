@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>{{ _('KrishiLink') }} | {{ _('Smart Crop Deals') }}</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='mobile-fix.css') }}"
+        />
+    </head>
+    <body class="home-page">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+            <div class="container">
+                <a
+                    class="navbar-brand d-flex align-items-center"
+                    href="{{ url_for('home') }}"
+                >
+                    <img
+                        src="{{ url_for('static', filename='images/logo.png') }}"
+                        alt="KrishiLink Logo"
+                        height="70"
+                        class="me-2"
+                    />
+                    <span class="fw-bold text-white"
+                        >{{ _('KrishiLink') }}</span
+                    >
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse justify-content-end"
+                    id="navbarNav"
+                >
+                    <ul class="navbar-nav me-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('home') }}"
+                                >{{ _('Home') }}</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about"
+                                >{{ _('About') }}</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#farmer"
+                                >{{ _('Farmer') }}</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#buyer"
+                                >{{ _('Buyer') }}</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact"
+                                >{{ _('Contact') }}</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}"
+                                >{{ _('Login') }}</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('register') }}"
+                                >{{ _('Register') }}</a
+                            >
+                        </li>
+
+                        <!-- Language Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a
+                                class="btn btn-outline-light dropdown-toggle"
+                                href="#"
+                                id="languageDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                🌐 {{ _('Languages') }}
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="languageDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='en') }}"
+                                        >{{ _('English') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='hi') }}"
+                                        >{{ _('हिन्दी') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='mr') }}"
+                                        >{{ _('मराठी') }}</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-section text-center">
+            <div class="container">
+                <h1>{{ _('Welcome to KrishiLink') }}</h1>
+                <p>
+                    {{ _('Smart Crop Pre-Booking & Rain-Aware Deal Platform') }}
+                </p>
+                <div class="main-buttons mt-3">
+                    <a
+                        href="{{ url_for('login') }}"
+                        class="btn btn-success btn-lg me-2"
+                        >{{ _('Login') }}</a
+                    >
+                    <a
+                        href="{{ url_for('register') }}"
+                        class="btn btn-warning btn-lg"
+                        >{{ _('Register') }}</a
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- Carousel -->
+        <div
+            id="farmCarousel"
+            class="carousel slide mt-4"
+            data-bs-ride="carousel"
+        >
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img
+                        src="{{ url_for('static', filename='images/farm1.jpg') }}"
+                        class="d-block w-100 carousel-img"
+                        alt="{{ _('Farm Image 1') }}"
+                    />
+                </div>
+                <div class="carousel-item">
+                    <img
+                        src="{{ url_for('static', filename='images/farm2.jpg') }}"
+                        class="d-block w-100 carousel-img"
+                        alt="{{ _('Farm Image 2') }}"
+                    />
+                </div>
+                <div class="carousel-item">
+                    <img
+                        src="{{ url_for('static', filename='images/farm3.jpg') }}"
+                        class="d-block w-100 carousel-img"
+                        alt="{{ _('Farm Image 3') }}"
+                    />
+                </div>
+            </div>
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#farmCarousel"
+                data-bs-slide="prev"
+            >
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#farmCarousel"
+                data-bs-slide="next"
+            >
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- About Section -->
+        <section class="info-section" id="about">
+            <div class="container">
+                <h2>{{ _('About KrishiLink') }}</h2>
+                <p>
+                    {{ _('KrishiLink connects farmers and buyers through a smart
+                    pre-harvest booking system. With rain forecasting alerts and
+                    a secure wallet system, it minimizes crop loss and ensures
+                    smooth transactions.') }}
+                </p>
+            </div>
+        </section>
+
+        <!-- Farmer & Buyer Section -->
+        <section class="info-section bg-light" id="farmer">
+            <div class="container">
+                <h2 class="mb-4 text-success">
+                    {{ _('Who Can Use KrishiLink?') }}
+                </h2>
+                <div class="row">
+                    <!-- Farmer Card -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow">
+                            <img
+                                src="{{ url_for('static', filename='images/farmer.jpg') }}"
+                                class="card-img-top object-fit-cover"
+                                style="height: 250px"
+                                alt="{{ _('Farmer') }}"
+                            />
+                            <div class="card-body">
+                                <h4 class="card-title text-success">
+                                    {{ _('For Farmers') }}
+                                </h4>
+                                <p class="card-text">
+                                    {{ _('Farmers can list upcoming crops,
+                                    accept pre-bookings, and receive early
+                                    payment alerts. Our platform helps reduce
+                                    dependency on middlemen and rain-damage
+                                    risk.') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buyer Card -->
+                    <div class="col-md-6 mb-4" id="buyer">
+                        <div class="card h-100 shadow">
+                            <img
+                                src="{{ url_for('static', filename='images/buyer.jpg') }}"
+                                class="card-img-top object-fit-cover"
+                                style="height: 250px"
+                                alt="{{ _('Buyer') }}"
+                            />
+                            <div class="card-body">
+                                <h4 class="card-title text-success">
+                                    {{ _('For Buyers') }}
+                                </h4>
+                                <p class="card-text">
+                                    {{ _('Buyers get direct access to crops
+                                    before they hit the market. Filter by crop
+                                    type, harvest window or price and lock deals
+                                    ahead of time. Real-time updates and wallet
+                                    integration included.') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="info-section text-center" id="contact">
+            <div class="container">
+                <h2>{{ _('Contact Us') }}</h2>
+                <p>
+                    {{ _('Email') }}:
+                    <a href="mailto:sp157681@gmail.com">sp157681@gmail.com</a> |
+                    {{ _('Phone') }}:
+                    <a href="tel:+918792588622">+91-8792588622</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center bg-dark text-white py-3">
+            &copy; 2025 {{ _('KrishiLink') }}. {{ _('All Rights Reserved.') }}
+        </footer>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

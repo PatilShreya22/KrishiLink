@@ -1,0 +1,134 @@
+/* GENERAL */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #2e7d32 !important; /* Green background */
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #c8e6c9 !important; /* Light green on hover */
+}
+
+/* HERO SECTION */
+.hero-section {
+    background-color: #e8f5e9;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.main-buttons a {
+    margin: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* CAROUSEL IMAGE */
+.carousel-img {
+    height: 550px;
+    width: 100%;
+    object-fit: cover;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+/* CARD STYLING */
+.card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card-img-top,
+.object-fit-cover {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    background-color: #f9f9f9;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+/* INFO SECTION */
+.info-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.info-section h2 {
+    color: #388e3c;
+    margin-bottom: 20px;
+}
+
+.info-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+/* FOOTER */
+footer {
+    background-color: #1b5e20;
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .carousel-img {
+        height: 300px;
+    }
+
+    .card {
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

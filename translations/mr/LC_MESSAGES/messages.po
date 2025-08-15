@@ -1,0 +1,1313 @@
+# Marathi translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-08-15 14:52+0530\n"
+"PO-Revision-Date: 2025-08-15 14:52+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: mr\n"
+"Language-Team: mr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: templates/add_crop.html:65 templates/buyer_dashboard.html:30
+#: templates/buyer_profile.html:6 templates/buyer_profile.html:70
+#: templates/buyer_profile.html:75 templates/cart.html:30
+#: templates/complete_profile.html:5 templates/complete_profile.html:48
+#: templates/edit_crop.html:58 templates/farmer_dashboard.html:31
+#: templates/farmer_profile.html:5 templates/farmer_profile.html:71
+#: templates/farmer_profile.html:76 templates/forgot_password.html:75
+#: templates/index.html:7 templates/index.html:36 templates/index.html:278
+#: templates/login.html:5 templates/login.html:83 templates/login.html:88
+#: templates/notifications.html:148 templates/orders.html:31
+#: templates/payment.html:7 templates/payment.html:69 templates/payment.html:74
+#: templates/register.html:6 templates/register.html:94
+#: templates/register.html:99 templates/search_results.html:46
+msgid "KrishiLink"
+msgstr "कृषीलिंक"
+
+#: templates/add_crop.html:77 templates/buyer_dashboard.html:41
+#: templates/cart.html:41 templates/complete_profile.html:51
+#: templates/edit_crop.html:69 templates/farmer_dashboard.html:43
+#: templates/login.html:98 templates/notifications.html:158
+#: templates/orders.html:42 templates/payment.html:84
+#: templates/register.html:110 templates/search_results.html:57
+msgid "Toggle navigation"
+msgstr "नेव्हिगेशन टॉगल करा"
+
+#: templates/add_crop.html:146 templates/buyer_dashboard.html:131
+#: templates/cart.html:133 templates/edit_crop.html:120
+#: templates/farmer_dashboard.html:112 templates/orders.html:135
+#: templates/search_results.html:147
+msgid "View All"
+msgstr "सर्व पहा"
+
+#: templates/add_crop.html:151 templates/buyer_dashboard.html:136
+#: templates/cart.html:138 templates/edit_crop.html:123
+#: templates/farmer_dashboard.html:117 templates/orders.html:140
+#: templates/search_results.html:152
+msgid "No notifications"
+msgstr "कोणतीही सूचना नाही"
+
+#: templates/add_crop.html:163 templates/buyer_dashboard.html:147
+#: templates/edit_crop.html:131 templates/farmer_dashboard.html:129
+#: templates/index.html:54 templates/orders.html:152
+#: templates/search_results.html:163
+msgid "Home"
+msgstr "मुख्यपृष्ठ"
+
+#: templates/add_crop.html:177 templates/buyer_dashboard.html:179
+#: templates/cart.html:181 templates/complete_profile.html:58
+#: templates/edit_crop.html:145 templates/farmer_dashboard.html:143
+#: templates/login.html:116 templates/notifications.html:177
+#: templates/orders.html:186 templates/payment.html:102
+#: templates/register.html:129 templates/search_results.html:195
+msgid "Languages"
+msgstr "भाषा"
+
+#: templates/add_crop.html:187 templates/buyer_dashboard.html:189
+#: templates/cart.html:191 templates/complete_profile.html:61
+#: templates/edit_crop.html:148 templates/farmer_dashboard.html:153
+#: templates/notifications.html:187 templates/orders.html:196
+#: templates/payment.html:112 templates/register.html:139
+#: templates/search_results.html:205
+msgid "English"
+msgstr "इंग्रजी"
+
+#: templates/add_crop.html:194 templates/buyer_dashboard.html:196
+#: templates/cart.html:198 templates/complete_profile.html:62
+#: templates/notifications.html:194 templates/orders.html:203
+#: templates/payment.html:119 templates/register.html:146
+msgid "हिन्दी"
+msgstr "हिंदी"
+
+#: templates/add_crop.html:201 templates/buyer_dashboard.html:203
+#: templates/cart.html:205 templates/complete_profile.html:63
+#: templates/notifications.html:201 templates/orders.html:210
+#: templates/payment.html:126 templates/register.html:153
+msgid "मराठी"
+msgstr "मराठी"
+
+#: templates/add_crop.html:222 templates/buyer_dashboard.html:224
+#: templates/cart.html:226 templates/edit_crop.html:169
+#: templates/farmer_dashboard.html:188 templates/orders.html:231
+#: templates/search_results.html:240
+msgid "Profile"
+msgstr "प्रोफाईल"
+
+#: templates/add_crop.html:233 templates/buyer_dashboard.html:235
+#: templates/cart.html:237 templates/edit_crop.html:173
+#: templates/farmer_dashboard.html:199 templates/orders.html:243
+#: templates/search_results.html:251
+msgid "Edit Profile"
+msgstr "प्रोफाईल संपादित करा"
+
+#: templates/add_crop.html:240 templates/buyer_dashboard.html:242
+#: templates/cart.html:244 templates/edit_crop.html:174
+#: templates/farmer_dashboard.html:206 templates/orders.html:251
+#: templates/search_results.html:258
+msgid "Logout"
+msgstr "बाहेर पडणे"
+
+#: templates/add_crop.html:253 templates/buyer_dashboard.html:257
+#: templates/cart.html:259 templates/edit_crop.html:178
+#: templates/farmer_dashboard.html:221 templates/orders.html:266
+#: templates/search_results.html:273
+msgid "Remove Profile Image"
+msgstr "प्रोफाईल प्रतिमा काढा"
+
+#: templates/add_crop.html:271
+msgid "Add New Crop"
+msgstr "नवीन पीक जोडा"
+
+#: templates/add_crop.html:278 templates/edit_crop.html:201
+msgid "Crop Name"
+msgstr "पीकाचे नाव"
+
+#: templates/add_crop.html:291 templates/edit_crop.html:206
+msgid "Quantity (in Kg)"
+msgstr "प्रमाण (किलोमध्ये)"
+
+#: templates/add_crop.html:304 templates/edit_crop.html:211
+#: templates/farmer_dashboard.html:380
+msgid "Price (₹/Kg)"
+msgstr "किंमत (₹/किलो)"
+
+#: templates/add_crop.html:317 templates/edit_crop.html:216
+#: templates/farmer_dashboard.html:381
+msgid "Harvest Date"
+msgstr "सिंकटाचा दिनांक"
+
+#: templates/add_crop.html:330 templates/edit_crop.html:221
+msgid "Description / Expectation"
+msgstr "वर्णन / अपेक्षा"
+
+#: templates/add_crop.html:338
+msgid "E.g. Organically grown, expecting fair price and regular buyer."
+msgstr ""
+"उदा. सेंद्रिय पद्धतीने वाढवलेले, योग्य किंमत आणि नियमित खरेदीदाराची "
+"अपेक्षा."
+
+#: templates/add_crop.html:345 templates/edit_crop.html:227
+msgid "Crop Image"
+msgstr "पीक प्रतिमा"
+
+#: templates/add_crop.html:362 templates/complete_profile.html:109
+#: templates/edit_crop.html:239
+msgid "Image Preview"
+msgstr "प्रतिमेचे पूर्वावलोकन"
+
+#: templates/add_crop.html:373 templates/edit_crop.html:253
+msgid "Delivery Method"
+msgstr "वितरण पद्धत"
+
+#: templates/add_crop.html:382
+msgid "-- Select Delivery Method --"
+msgstr "-- वितरण पद्धत निवडा --"
+
+#: templates/add_crop.html:386 templates/edit_crop.html:255
+msgid "Farmer Delivers"
+msgstr "शेती करणारा वितरित करतो"
+
+#: templates/add_crop.html:389 templates/edit_crop.html:256
+msgid "Buyer Pickup"
+msgstr "खरेदीदार उठवतो"
+
+#: templates/add_crop.html:400 templates/farmer_dashboard.html:369
+msgid "Add Crop"
+msgstr "पीक जोडा"
+
+#: templates/add_crop.html:411 templates/buyer_dashboard.html:554
+#: templates/buyer_profile.html:145 templates/cart.html:321
+#: templates/complete_profile.html:200 templates/edit_crop.html:272
+#: templates/farmer_dashboard.html:580 templates/farmer_profile.html:148
+#: templates/forgot_password.html:155 templates/login.html:221
+#: templates/notifications.html:320 templates/orders.html:368
+#: templates/payment.html:221 templates/register.html:273
+#: templates/search_results.html:390
+msgid "KrishiLink. All Rights Reserved."
+msgstr "कृषीलिंक. सर्व हक्क राखीव."
+
+#: templates/buyer_dashboard.html:25 templates/cart.html:25
+#: templates/complete_profile.html:47 templates/edit_crop.html:54
+#: templates/farmer_dashboard.html:26 templates/forgot_password.html:70
+#: templates/notifications.html:143 templates/orders.html:26
+msgid "KrishiLink Logo"
+msgstr "कृषीलिंक लोगो"
+
+#: templates/buyer_dashboard.html:63 templates/cart.html:63
+#: templates/orders.html:64 templates/search_results.html:79
+msgid "Search crops..."
+msgstr "पीक शोधा..."
+
+#: templates/buyer_dashboard.html:64 templates/buyer_dashboard.html:68
+#: templates/cart.html:64 templates/cart.html:68 templates/orders.html:65
+#: templates/orders.html:69 templates/search_results.html:80
+#: templates/search_results.html:84
+msgid "Search"
+msgstr "शोधा"
+
+#: templates/buyer_dashboard.html:156 templates/orders.html:162
+#: templates/search_results.html:172
+msgid "Cart"
+msgstr "कार्ट"
+
+#: templates/buyer_dashboard.html:165 templates/orders.html:172
+#: templates/search_results.html:181
+msgid "Orders"
+msgstr "ऑर्डर"
+
+#: templates/buyer_dashboard.html:283 templates/farmer_dashboard.html:247
+msgid "Your Wallet"
+msgstr "आपला वॉलेट"
+
+#: templates/buyer_dashboard.html:289 templates/farmer_dashboard.html:253
+msgid "Close"
+msgstr "बंद करा"
+
+#: templates/buyer_dashboard.html:294 templates/farmer_dashboard.html:258
+msgid "Current Balance:"
+msgstr "सध्याचा शिल्लक:"
+
+#: templates/buyer_dashboard.html:301 templates/farmer_dashboard.html:265
+msgid "Add Amount"
+msgstr "रक्कम जोडा"
+
+#: templates/buyer_dashboard.html:314 templates/farmer_dashboard.html:279
+msgid "UPI ID"
+msgstr "UPI आयडी"
+
+#: templates/buyer_dashboard.html:321 templates/farmer_dashboard.html:286
+msgid "example@upi"
+msgstr "उदाहरण@upi"
+
+#: templates/buyer_dashboard.html:326 templates/farmer_dashboard.html:292
+msgid "Add Money"
+msgstr "रक्कम जोडा"
+
+#: templates/buyer_dashboard.html:331
+msgid ""
+"You can see payments here after selling\n"
+"                            crops."
+msgstr "आपण इथे पीके विकल्यानंतर केलेली पेमेंट्स पाहू शकता."
+
+#: templates/buyer_dashboard.html:343
+msgid "Crops Matching Your Preferences"
+msgstr "आपल्या पसंतीला जुळणारी पीके"
+
+#: templates/buyer_dashboard.html:365 templates/buyer_dashboard.html:471
+msgid "Price:"
+msgstr "किंमत:"
+
+#: templates/buyer_dashboard.html:375 templates/buyer_dashboard.html:481
+#: templates/search_results.html:319
+msgid "Not specified"
+msgstr "निर्दिष्ट नाही"
+
+#: templates/buyer_dashboard.html:389 templates/buyer_dashboard.html:495
+#: templates/search_results.html:333
+msgid "Add to Cart"
+msgstr "कार्टमध्ये जोडा"
+
+#: templates/buyer_dashboard.html:401 templates/buyer_dashboard.html:507
+#: templates/search_results.html:345
+msgid "Buy Now"
+msgstr "आता खरेदी करा"
+
+#: templates/buyer_dashboard.html:413 templates/buyer_dashboard.html:519
+#: templates/farmer_profile.html:92 templates/index.html:64
+#: templates/index.html:221 templates/orders.html:293 templates/orders.html:329
+#: templates/register.html:242 templates/search_results.html:357
+msgid "Farmer"
+msgstr "शेतकरी"
+
+#: templates/buyer_dashboard.html:441
+msgid ""
+"No crops available matching your preferences at the\n"
+"                moment."
+msgstr "सध्या आपल्या पसंतीला जुळणारी कोणतीही पीके उपलब्ध नाहीत."
+
+#: templates/buyer_dashboard.html:449
+msgid "Newly Added Crops"
+msgstr "नवीन जोडलेली पीके"
+
+#: templates/buyer_dashboard.html:547
+msgid "No other crops available right now."
+msgstr "सध्या इतर कोणतीही पीके उपलब्ध नाहीत."
+
+#: templates/buyer_profile.html:91 templates/buyer_profile.html:97
+#: templates/farmer_dashboard.html:445 templates/farmer_dashboard.html:495
+#: templates/farmer_dashboard.html:513 templates/index.html:69
+#: templates/index.html:245 templates/register.html:245
+msgid "Buyer"
+msgstr "खरेदीदार"
+
+#: templates/buyer_profile.html:111
+msgid "Company:"
+msgstr "कंपनी:"
+
+#: templates/buyer_profile.html:116
+msgid "Business Type:"
+msgstr "व्यवसाय प्रकार:"
+
+#: templates/buyer_profile.html:121
+msgid "Preferred Crops:"
+msgstr "पसंतीची पीके:"
+
+#: templates/buyer_profile.html:127 templates/farmer_profile.html:114
+msgid "Email:"
+msgstr "ईमेल:"
+
+#: templates/buyer_profile.html:131 templates/farmer_profile.html:118
+msgid "Phone:"
+msgstr "फोन:"
+
+#: templates/buyer_profile.html:135 templates/farmer_profile.html:122
+msgid "Location / Address:"
+msgstr "ठिकाण / पत्ता:"
+
+#: templates/cart.html:149
+msgid "🏠 Home"
+msgstr "🏠 मुख्यपृष्ठ"
+
+#: templates/cart.html:158
+msgid "🛒 Cart"
+msgstr "🛒 कार्ट"
+
+#: templates/cart.html:167
+msgid "📦 Orders"
+msgstr "📦 ऑर्डर"
+
+#: templates/cart.html:272
+msgid "🛒 Your Cart"
+msgstr "🛒 आपला कार्ट"
+
+#: templates/cart.html:280 templates/farmer_dashboard.html:378
+#: templates/farmer_dashboard.html:492 templates/orders.html:288
+msgid "Crop"
+msgstr "पीक"
+
+#: templates/cart.html:281 templates/search_results.html:309
+msgid "Price"
+msgstr "किंमत"
+
+#: templates/cart.html:282 templates/farmer_dashboard.html:493
+#: templates/orders.html:289
+msgid "Quantity"
+msgstr "प्रमाण"
+
+#: templates/cart.html:283
+msgid "Total"
+msgstr "एकूण"
+
+#: templates/cart.html:298
+msgid "Remove"
+msgstr "काढा"
+
+#: templates/cart.html:307
+msgid "Total:"
+msgstr "एकूण:"
+
+#: templates/cart.html:310
+msgid "Checkout"
+msgstr "चेकआउट"
+
+#: templates/cart.html:315
+msgid "Your cart is empty."
+msgstr "आपला कार्ट रिकामा आहे."
+
+#: templates/complete_profile.html:5
+msgid "Complete Profile"
+msgstr "प्रोफाईल पूर्ण करा"
+
+#: templates/complete_profile.html:77
+msgid "Complete Your Profile"
+msgstr "आपला प्रोफाईल पूर्ण करा"
+
+#: templates/complete_profile.html:82
+msgid "Phone Number"
+msgstr "फोन नंबर"
+
+#: templates/complete_profile.html:88
+msgid "Full Address"
+msgstr "पूर्ण पत्ता"
+
+#: templates/complete_profile.html:90
+msgid "e.g., Lane 2, Hiranandani, Thane West, Maharashtra"
+msgstr "उदा., लेन २, हिरानंदानी, ठाणे वेस्ट, महाराष्ट्र"
+
+#: templates/complete_profile.html:93
+msgid "Pincode"
+msgstr "पिनकोड"
+
+#: templates/complete_profile.html:95
+msgid "e.g., 400607"
+msgstr "उदा., ४००६०७"
+
+#: templates/complete_profile.html:98
+msgid "Use GPS to Fill Location"
+msgstr "ठिकाण भरण्यासाठी GPS वापरा"
+
+#: templates/complete_profile.html:103
+msgid "Upload Your Photo"
+msgstr "आपली फोटो अपलोड करा"
+
+#: templates/complete_profile.html:115
+msgid "Bank Account Number"
+msgstr "बँक खाते क्रमांक"
+
+#: templates/complete_profile.html:118
+msgid "Bank account number must be 9 to 18 digits"
+msgstr "बँक खाते क्रमांक ९ ते १८ अंकांचा असावा"
+
+#: templates/complete_profile.html:121
+msgid "Short Bio / About You"
+msgstr "संक्षिप्त परिचय / तुमच्याबद्दल"
+
+#: templates/complete_profile.html:122
+msgid "I am a farmer from Pune, growing organic vegetables for 10 years."
+msgstr "मी पुण्यातील शेतकरी आहे, गेल्या १० वर्षांपासून सेंद्रिय भाजीपाला उगवत आहे."
+
+#: templates/complete_profile.html:125
+msgid "Land Size (acres)"
+msgstr "जमिनीचा आकार (एकर)"
+
+#: templates/complete_profile.html:129
+msgid "Farm Type"
+msgstr "शेतीचा प्रकार"
+
+#: templates/complete_profile.html:131
+msgid "Select type"
+msgstr "प्रकार निवडा"
+
+#: templates/complete_profile.html:132
+msgid "Irrigated"
+msgstr "सिंचित"
+
+#: templates/complete_profile.html:133
+msgid "Rainfed"
+msgstr "पर्जन्य-निर्भर"
+
+#: templates/complete_profile.html:134
+msgid "Plantation"
+msgstr "वनस्पती लागवड"
+
+#: templates/complete_profile.html:135
+msgid "Horticulture"
+msgstr "बागायती पिके"
+
+#: templates/complete_profile.html:136
+msgid "Organic"
+msgstr "सेंद्रिय"
+
+#: templates/complete_profile.html:142
+msgid "Company Name"
+msgstr "कंपनीचे नाव"
+
+#: templates/complete_profile.html:146
+msgid "Business Type"
+msgstr "व्यवसाय प्रकार"
+
+#: templates/complete_profile.html:148
+msgid "Select business type"
+msgstr "व्यवसायाचा प्रकार निवडा"
+
+#: templates/complete_profile.html:149
+msgid "Wholesaler"
+msgstr "घाऊक विक्रेता"
+
+#: templates/complete_profile.html:150
+msgid "Retailer"
+msgstr "सुपरमार्केट / किरकोळ विक्रेता"
+
+#: templates/complete_profile.html:151
+msgid "Exporter"
+msgstr "निर्यातदार"
+
+#: templates/complete_profile.html:152
+msgid "Manufacturer"
+msgstr "उत्पादक"
+
+#: templates/complete_profile.html:157
+msgid "Preferred Crops"
+msgstr "पसंतीची पीके"
+
+#: templates/complete_profile.html:160
+msgid "Wheat"
+msgstr "गहू"
+
+#: templates/complete_profile.html:164
+msgid "Rice"
+msgstr "तांदूळ"
+
+#: templates/complete_profile.html:168
+msgid "Maize"
+msgstr "मका"
+
+#: templates/complete_profile.html:172
+msgid "Tomato"
+msgstr "टोमॅटो"
+
+#: templates/complete_profile.html:176
+msgid "Potato"
+msgstr "बटाटा"
+
+#: templates/complete_profile.html:180
+msgid "Onion"
+msgstr "कांदा"
+
+#: templates/complete_profile.html:185
+msgid "Other Crops (comma-separated)"
+msgstr "इतर पीके (कॉमा ने विभाजित)"
+
+#: templates/complete_profile.html:186
+msgid "Enter crops not listed above"
+msgstr "वरील सूचीतील नसलेली पीके प्रविष्ट करा"
+
+#: templates/complete_profile.html:191
+msgid "Submit"
+msgstr "सबमिट करा"
+
+#: templates/edit_crop.html:149 templates/farmer_dashboard.html:160
+#: templates/search_results.html:212
+msgid "Hindi"
+msgstr "हिंदी"
+
+#: templates/edit_crop.html:150 templates/farmer_dashboard.html:167
+#: templates/search_results.html:219
+msgid "Marathi"
+msgstr "मराठी"
+
+#: templates/edit_crop.html:197
+msgid "Edit Crop"
+msgstr "पीक संपादित करा"
+
+#: templates/edit_crop.html:234 templates/edit_crop.html:235
+msgid "Current Crop Image"
+msgstr "सध्याची पीक प्रतिमा"
+
+#: templates/edit_crop.html:244 templates/farmer_dashboard.html:382
+#: templates/orders.html:291
+msgid "Status"
+msgstr "स्थिती"
+
+#: templates/edit_crop.html:246 templates/farmer_dashboard.html:397
+msgid "Available"
+msgstr "उपलब्ध"
+
+#: templates/edit_crop.html:247
+msgid "Not Available"
+msgstr "उपलब्ध नाही"
+
+#: templates/edit_crop.html:248 templates/farmer_dashboard.html:401
+msgid "Sold"
+msgstr "विक्री झाले"
+
+#: templates/edit_crop.html:261
+msgid "Update Crop"
+msgstr "पीक अद्यतनित करा"
+
+#: templates/farmer_dashboard.html:297
+msgid ""
+"💡 You can see payments here after selling\n"
+"                            crops."
+msgstr "💡 येथे आपण पीके विकल्यानंतर केलेली पेमेंट पाहू शकता."
+
+#: templates/farmer_dashboard.html:315
+msgid "Current Weather in"
+msgstr "सध्याचे हवामान"
+
+#: templates/farmer_dashboard.html:319
+msgid "Temperature:"
+msgstr "तापमान:"
+
+#: templates/farmer_dashboard.html:323
+msgid "Feels Like:"
+msgstr "अनुभवलेले तापमान:"
+
+#: templates/farmer_dashboard.html:327
+msgid "Humidity:"
+msgstr "आर्द्रता:"
+
+#: templates/farmer_dashboard.html:331
+msgid "Wind Speed:"
+msgstr "वारा वेग:"
+
+#: templates/farmer_dashboard.html:335
+msgid "Condition:"
+msgstr "स्थिती:"
+
+#: templates/farmer_dashboard.html:341
+msgid "Weather Icon"
+msgstr "हवामान चिन्ह"
+
+#: templates/farmer_dashboard.html:349
+msgid "Weather Alert:"
+msgstr "हवामान इशारा:"
+
+#: templates/farmer_dashboard.html:367
+msgid "Your Crops"
+msgstr "आपली पीके"
+
+#: templates/farmer_dashboard.html:379
+msgid "Quantity (Kg)"
+msgstr "प्रमाण (किलो)"
+
+#: templates/farmer_dashboard.html:383 templates/farmer_dashboard.html:497
+msgid "Actions"
+msgstr "क्रिया"
+
+#: templates/farmer_dashboard.html:384
+msgid "Buyers"
+msgstr "खरेदीदार"
+
+#: templates/farmer_dashboard.html:415 templates/farmer_dashboard.html:422
+msgid "Edit"
+msgstr "संपादित करा"
+
+#: templates/farmer_dashboard.html:428
+msgid "Are you sure you want to delete this crop?"
+msgstr "आपल्याला खरोखरच हे पीक हटवायचे आहे का?"
+
+#: templates/farmer_dashboard.html:430
+msgid "Delete"
+msgstr "हटवा"
+
+#: templates/farmer_dashboard.html:466
+msgid "Buyer info not available"
+msgstr "खरेदीदाराची माहिती उपलब्ध नाही"
+
+#: templates/farmer_dashboard.html:470
+msgid "Not sold yet"
+msgstr "अजून विक्री झाली नाही"
+
+#: templates/farmer_dashboard.html:478
+msgid "No crops added yet."
+msgstr "अजून कोणतीही पीके जोडलेली नाहीत."
+
+#: templates/farmer_dashboard.html:484
+msgid "Pending Cash on Delivery Orders"
+msgstr "प्रलंबित रोख वितरण ऑर्डर"
+
+#: templates/farmer_dashboard.html:491 templates/orders.html:287
+msgid "Order ID"
+msgstr "ऑर्डर आयडी"
+
+#: templates/farmer_dashboard.html:494 templates/orders.html:290
+msgid "Total Price"
+msgstr "एकूण किंमत"
+
+#: templates/farmer_dashboard.html:496 templates/orders.html:292
+msgid "Order Date"
+msgstr "ऑर्डर तारीख"
+
+#: templates/farmer_dashboard.html:548
+msgid "Approve"
+msgstr "मंजूर करा"
+
+#: templates/farmer_dashboard.html:560
+msgid "Reject"
+msgstr "नाकार करा"
+
+#: templates/farmer_dashboard.html:568
+msgid "No pending orders."
+msgstr "कोणतेही प्रलंबित ऑर्डर नाहीत."
+
+#: templates/farmer_profile.html:108
+msgid "About:"
+msgstr "बद्दल:"
+
+#: templates/farmer_profile.html:126
+msgid "Crops Posted:"
+msgstr "जोडलेली पीके:"
+
+#: templates/farmer_profile.html:138
+msgid "No crops available right now."
+msgstr "सध्या कोणतीही पीके उपलब्ध नाहीत."
+
+#: templates/forgot_password.html:88
+msgid "Reset Your Password"
+msgstr "आपला पासवर्ड रीसेट करा"
+
+#: templates/forgot_password.html:94 templates/index.html:270
+#: templates/login.html:170 templates/register.html:189
+msgid "Email"
+msgstr "ईमेल"
+
+#: templates/forgot_password.html:107
+msgid "New Password"
+msgstr "नवीन पासवर्ड"
+
+#: templates/forgot_password.html:122
+msgid "Confirm Password"
+msgstr "पासवर्ड पुष्टी करा"
+
+#: templates/forgot_password.html:138
+msgid "Change Password"
+msgstr "पासवर्ड बदला"
+
+#: templates/forgot_password.html:145
+msgid "Back to Login"
+msgstr "लॉगिनकडे परत जा"
+
+#: templates/index.html:7
+msgid "Smart Crop Deals"
+msgstr "स्मार्ट क्रॉप डील्स"
+
+#: templates/index.html:59
+msgid "About"
+msgstr "बद्दल"
+
+#: templates/index.html:74
+msgid "Contact"
+msgstr "संपर्क"
+
+#: templates/index.html:79 templates/index.html:136 templates/login.html:5
+#: templates/login.html:197
+msgid "Login"
+msgstr "लॉगिन"
+
+#: templates/index.html:84 templates/index.html:141 templates/register.html:6
+#: templates/register.html:255
+msgid "Register"
+msgstr "नोंदणी"
+
+#: templates/index.html:95
+msgid "Language"
+msgstr "भाषा"
+
+#: templates/index.html:128
+msgid "Welcome to KrishiLink"
+msgstr "कृषी लिंक मध्ये आपले स्वागत आहे"
+
+#: templates/index.html:130
+msgid "Smart Crop Pre-Booking & Rain-Aware Deal Platform"
+msgstr "स्मार्ट पीक प्री-बुकिंग आणि पर्जन्य-आधारित डील प्लॅटफॉर्म"
+
+#: templates/index.html:158
+msgid "Farm Image 1"
+msgstr "शेती प्रतिमा १"
+
+#: templates/index.html:165
+msgid "Farm Image 2"
+msgstr "शेती प्रतिमा २"
+
+#: templates/index.html:172
+msgid "Farm Image 3"
+msgstr "शेती प्रतिमा ३"
+
+#: templates/index.html:197
+msgid "About KrishiLink"
+msgstr "कृषी लिंक बद्दल"
+
+#: templates/index.html:199
+msgid ""
+"KrishiLink connects farmers and buyers through a smart\n"
+"                    pre-harvest booking system. With rain forecasting "
+"alerts and\n"
+"                    a secure wallet system, it minimizes crop loss and "
+"ensures\n"
+"                    smooth transactions."
+msgstr ""
+"कृषी लिंक शेतकऱ्यांना आणि खरेदीदारांना स्मार्ट प्री-हार्वेस्ट बुकिंग "
+"सिस्टमद्वारे जोडते. पर्जन्य अंदाज सूचना आणि सुरक्षित वॉलेट सिस्टममुळे पीक"
+" तोटा कमी होतो आणि व्यवहार सुरळीत होतात."
+
+#: templates/index.html:211
+msgid "Who Can Use KrishiLink?"
+msgstr "कुण वापरू शकतो कृषी लिंक?"
+
+#: templates/index.html:225
+msgid "For Farmers"
+msgstr "शेतकऱ्यांसाठी"
+
+#: templates/index.html:228
+msgid ""
+"Farmers can list upcoming crops,\n"
+"                                    accept pre-bookings, and receive "
+"early\n"
+"                                    payment alerts. Our platform helps "
+"reduce\n"
+"                                    dependency on middlemen and rain-"
+"damage\n"
+"                                    risk."
+msgstr ""
+"शेतकऱ्यांनी येणारी पीके सूचीबद्ध करू शकतात, प्री-बुकिंग स्वीकारू शकतात, "
+"आणि लवकर पेमेंट सूचना मिळवू शकतात. आमचे प्लॅटफॉर्म मध्यस्थांवरील "
+"अवलंबित्व आणि पर्जन्यामुळे होणारा धोका कमी करण्यात मदत करते."
+
+#: templates/index.html:249
+msgid "For Buyers"
+msgstr "खरेदीदारांसाठी"
+
+#: templates/index.html:252
+msgid ""
+"Buyers get direct access to crops\n"
+"                                    before they hit the market. Filter by"
+" crop\n"
+"                                    type, harvest window or price and "
+"lock deals\n"
+"                                    ahead of time. Real-time updates and "
+"wallet\n"
+"                                    integration included."
+msgstr ""
+"खरेदीदारांना पीके थेट उपलब्ध होण्यापूर्वी प्रवेश मिळतो. पीक प्रकार, "
+"हार्वेस्ट विंडो किंवा किंमतानुसार फिल्टर करा आणि डील्स आधीपासून लॉक करा. "
+"रिअल-टाइम अपडेट्स आणि वॉलेट इंटिग्रेशन समाविष्ट आहे."
+
+#: templates/index.html:268
+msgid "Contact Us"
+msgstr "संपर्क साधा"
+
+#: templates/index.html:270 templates/register.html:202
+msgid "Phone"
+msgstr "फोन"
+
+#: templates/index.html:278
+msgid "All Rights Reserved."
+msgstr "सर्व हक्क राखीव."
+
+#: templates/login.html:157
+msgid "Welcome Back!"
+msgstr "परत स्वागत आहे!"
+
+#: templates/login.html:182 templates/register.html:215
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: templates/login.html:203
+msgid "Don’t have an account?"
+msgstr "खाते नाही का?"
+
+#: templates/login.html:205
+msgid "Register here"
+msgstr "इथे नोंदणी करा"
+
+#: templates/login.html:211
+msgid "Forgot your password?"
+msgstr "आपला पासवर्ड विसरलात?"
+
+#: templates/notifications.html:5 templates/orders.html:99
+msgid "Notifications"
+msgstr "सूचना"
+
+#: templates/notifications.html:175
+msgid "Select Language"
+msgstr "भाषा निवडा"
+
+#: templates/notifications.html:218
+msgid "Notifications list"
+msgstr "सूचनांची यादी"
+
+#: templates/notifications.html:222
+msgid "Your Notifications"
+msgstr "आपल्या सूचना"
+
+#: templates/notifications.html:238
+msgid "Back to Dashboard"
+msgstr "डॅशबोर्डकडे परत जा"
+
+#: templates/notifications.html:255
+msgid "Clear Selected"
+msgstr "निवडलेले साफ करा"
+
+#: templates/notifications.html:265
+msgid "Select All"
+msgstr "सर्व निवडा"
+
+#: templates/notifications.html:296
+msgid "Mark as read"
+msgstr "वाचले म्हणून चिन्हांकित करा"
+
+#: templates/notifications.html:301
+msgid "Read"
+msgstr "वाचले"
+
+#: templates/notifications.html:310
+msgid "You have no notifications."
+msgstr "आपल्याकडे कोणतीही सूचना नाही."
+
+#: templates/notifications.html:342
+msgid "Please select at least one notification to clear."
+msgstr "कृपया साफ करण्यासाठी किमान एक सूचना निवडा."
+
+#: templates/orders.html:279
+msgid "Your Orders"
+msgstr "आपले ऑर्डर"
+
+#: templates/orders.html:352
+msgid "Farmer info not available"
+msgstr "शेतकऱ्याची माहिती उपलब्ध नाही"
+
+#: templates/orders.html:362
+msgid "You have no orders yet."
+msgstr "आपल्याकडे अजून कोणतेही ऑर्डर नाहीत."
+
+#: templates/payment.html:7
+msgid "Mock UPI Payment"
+msgstr "मॉक यूपीआय पेमेंट"
+
+#: templates/payment.html:143
+msgid "Pay for Order #"
+msgstr "ऑर्डर # साठी पैसे द्या"
+
+#: templates/payment.html:147
+msgid "Amount to pay: ₹"
+msgstr "देय रक्कम: ₹"
+
+#: templates/payment.html:154
+msgid "Select Payment Method"
+msgstr "पेमेंट पद्धत निवडा"
+
+#: templates/payment.html:169
+msgid "Pay via UPI (Mock)"
+msgstr "यूपीआयद्वारे पेमेंट करा (मॉक)"
+
+#: templates/payment.html:185
+msgid "Pay via Wallet"
+msgstr "वॉलेटद्वारे पेमेंट करा"
+
+#: templates/payment.html:200
+msgid "Cash on Delivery"
+msgstr "रोख वितरणावर"
+
+#: templates/payment.html:210
+msgid "Pay Now"
+msgstr "आता पैसे द्या"
+
+#: templates/payment.html:238
+msgid "Enter your UPI ID (mock):"
+msgstr "आपला यूपीआय आयडी प्रविष्ट करा (मॉक):"
+
+#: templates/payment.html:240
+msgid "UPI ID is required!"
+msgstr "UPI आयडी आवश्यक आहे!"
+
+#: templates/payment.html:258
+msgid "Transaction ID:"
+msgstr "व्यवहार आयडी:"
+
+#: templates/payment.html:265
+msgid "Payment failed:"
+msgstr "पेमेंट अयशस्वी:"
+
+#: templates/payment.html:268
+msgid "Error:"
+msgstr "त्रुटी:"
+
+#: templates/register.html:170
+msgid "Create Your Account"
+msgstr "आपले खाते तयार करा"
+
+#: templates/register.html:176
+msgid "Username"
+msgstr "वापरकर्तानाव"
+
+#: templates/register.html:224
+msgid ""
+"Password must be minimum 8 characters, include at least one letter, one "
+"number, and one special character"
+msgstr ""
+"पासवर्ड किमान ८ अक्षरे असावा, त्यात किमान एक अक्षर, एक अंक आणि एक विशेष "
+"चिन्ह असावे"
+
+#: templates/register.html:230
+msgid "Role"
+msgstr "भूमिका"
+
+#: templates/register.html:239
+msgid "Select role"
+msgstr "भूमिका निवडा"
+
+#: templates/register.html:262
+msgid "Already have an account?"
+msgstr "आधीच खाते आहे का?"
+
+#: templates/register.html:263
+msgid "Login here"
+msgstr "इथे लॉगिन करा"
+
+#: templates/search_results.html:286
+msgid "Search Results for"
+msgstr "साठी शोध परिणाम"
+
+#: templates/search_results.html:384
+msgid "No crops found matching your search query."
+msgstr "आपल्या शोधासाठी कोणतीही पीके सापडली नाहीत."
+
+#: venv/Lib/site-packages/click/_termui_impl.py:600
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr "{editor}: संपादन अयशस्वी"
+
+#: venv/Lib/site-packages/click/_termui_impl.py:604
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr "{editor}: संपादन अयशस्वी: {e}"
+
+#: venv/Lib/site-packages/click/core.py:1084
+#: venv/Lib/site-packages/click/core.py:1121
+#, python-brace-format
+msgid "{text} {deprecated_message}"
+msgstr "{text} {deprecated_message}"
+
+#: venv/Lib/site-packages/click/core.py:1140
+msgid "Options"
+msgstr "पर्याय"
+
+#: venv/Lib/site-packages/click/core.py:1202
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] "अनपेक्षित अतिरिक्त आर्ग्युमेंट आले: ({args})"
+msgstr[1] "अनपेक्षित अतिरिक्त आर्ग्युमेंट आले: ({args})"
+
+#: venv/Lib/site-packages/click/core.py:1221
+#, python-brace-format
+msgid "DeprecationWarning: The command {name!r} is deprecated.{extra_message}"
+msgstr "DeprecationWarning: आदेश {name!r} जुना झाला आहे.{extra_message}"
+
+#: venv/Lib/site-packages/click/core.py:1405
+msgid "Aborted!"
+msgstr "रद्द केले!"
+
+#: venv/Lib/site-packages/click/core.py:1779
+msgid "Commands"
+msgstr "आदेश"
+
+#: venv/Lib/site-packages/click/core.py:1810
+msgid "Missing command."
+msgstr "आदेश गहाळ आहे."
+
+#: venv/Lib/site-packages/click/core.py:1888
+#, python-brace-format
+msgid "No such command {name!r}."
+msgstr "अशा प्रकारचा आदेश {name!r} नाही."
+
+#: venv/Lib/site-packages/click/core.py:2303
+msgid "Value must be an iterable."
+msgstr "किंमत iterable असावी."
+
+#: venv/Lib/site-packages/click/core.py:2324
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] "{nargs} मूल्ये अपेक्षित आहेत, परंतु 1 दिले गेले."
+msgstr[1] "{nargs} मूल्ये अपेक्षित आहेत, परंतु {len} दिले गेले."
+
+#: venv/Lib/site-packages/click/core.py:2404
+#, python-brace-format
+msgid ""
+"DeprecationWarning: The {param_type} {name!r} is "
+"deprecated.{extra_message}"
+msgstr "DeprecationWarning: {param_type} {name!r} जुना झाला आहे.{extra_message}"
+
+#: venv/Lib/site-packages/click/core.py:2807
+#, python-brace-format
+msgid "env var: {var}"
+msgstr "पर्यावरण चल: {var}"
+
+#: venv/Lib/site-packages/click/core.py:2810
+#, python-brace-format
+msgid "default: {default}"
+msgstr "डीफॉल्ट: {default}"
+
+#: venv/Lib/site-packages/click/core.py:2814
+msgid "required"
+msgstr "आवश्यक"
+
+#: venv/Lib/site-packages/click/core.py:2870
+msgid "(dynamic)"
+msgstr "(गतिक)"
+
+#: venv/Lib/site-packages/click/decorators.py:465
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr "%(prog)s, आवृत्ती %(version)s"
+
+#: venv/Lib/site-packages/click/decorators.py:522
+msgid "Show the version and exit."
+msgstr "आवृत्ती दाखवा आणि बाहेर या."
+
+#: venv/Lib/site-packages/click/decorators.py:548
+msgid "Show this message and exit."
+msgstr "हा संदेश दाखवा आणि बाहेर या."
+
+#: venv/Lib/site-packages/click/exceptions.py:50
+#: venv/Lib/site-packages/click/exceptions.py:89
+#, python-brace-format
+msgid "Error: {message}"
+msgstr "त्रुटी: {message}"
+
+#: venv/Lib/site-packages/click/exceptions.py:81
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr "मदतीसाठी '{command} {option}' प्रयत्न करा."
+
+#: venv/Lib/site-packages/click/exceptions.py:130
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr "अवैध मूल्य: {message}"
+
+#: venv/Lib/site-packages/click/exceptions.py:132
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr "{param_hint} साठी अवैध मूल्य: {message}"
+
+#: venv/Lib/site-packages/click/exceptions.py:190
+msgid "Missing argument"
+msgstr "आर्ग्युमेंट गहाळ आहे"
+
+#: venv/Lib/site-packages/click/exceptions.py:192
+msgid "Missing option"
+msgstr "पर्याय गहाळ आहे"
+
+#: venv/Lib/site-packages/click/exceptions.py:194
+msgid "Missing parameter"
+msgstr "पॅरामीटर गहाळ आहे"
+
+#: venv/Lib/site-packages/click/exceptions.py:196
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr "{param_type} गहाळ आहे"
+
+#: venv/Lib/site-packages/click/exceptions.py:203
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr "पॅरामीटर गहाळ आहे: {param_name}"
+
+#: venv/Lib/site-packages/click/exceptions.py:223
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr "अशा पर्यायाचा पर्याय नाही: {name}"
+
+#: venv/Lib/site-packages/click/exceptions.py:235
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] "आपल्याला {possibility} म्हणायचे होते का?"
+msgstr[1] "(संभाव्य पर्याय: {possibilities})"
+
+#: venv/Lib/site-packages/click/exceptions.py:282
+msgid "unknown error"
+msgstr "अज्ञात त्रुटी"
+
+#: venv/Lib/site-packages/click/exceptions.py:289
+#, python-brace-format
+msgid "Could not open file {filename!r}: {message}"
+msgstr "फाइल {filename!r} उघडता आली नाही: {message}"
+
+#: venv/Lib/site-packages/click/formatting.py:156
+msgid "Usage:"
+msgstr "वापर:"
+
+#: venv/Lib/site-packages/click/parser.py:200
+#, python-brace-format
+msgid "Argument {name!r} takes {nargs} values."
+msgstr "आर्ग्युमेंट {name!r} {nargs} मूल्ये घेते."
+
+#: venv/Lib/site-packages/click/parser.py:383
+#, python-brace-format
+msgid "Option {name!r} does not take a value."
+msgstr "पर्याय {name!r} मूल्य घेत नाही."
+
+#: venv/Lib/site-packages/click/parser.py:444
+#, python-brace-format
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] "पर्याय {name!r} ला आर्ग्युमेंट आवश्यक आहे."
+msgstr[1] "पर्याय {name!r} ला {nargs} आर्ग्युमेंट्स आवश्यक आहेत."
+
+#: venv/Lib/site-packages/click/shell_completion.py:326
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr "Bash 4.4 आधीच्या आवृत्त्यांसाठी शेल पूर्णता समर्थित नाही."
+
+#: venv/Lib/site-packages/click/shell_completion.py:333
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr "Bash आवृत्ती ओळखू शकली नाही, शेल पूर्णता समर्थित नाही."
+
+#: venv/Lib/site-packages/click/termui.py:162
+msgid "Repeat for confirmation"
+msgstr "पुष्टीसाठी पुनरावृत्ती करा"
+
+#: venv/Lib/site-packages/click/termui.py:178
+msgid "Error: The value you entered was invalid."
+msgstr "त्रुटी: आपण दिलेले मूल्य अवैध आहे."
+
+#: venv/Lib/site-packages/click/termui.py:180
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr "त्रुटी: {e.message}"
+
+#: venv/Lib/site-packages/click/termui.py:191
+msgid "Error: The two entered values do not match."
+msgstr "त्रुटी: दोन दिलेली मूल्ये जुळत नाहीत."
+
+#: venv/Lib/site-packages/click/termui.py:247
+msgid "Error: invalid input"
+msgstr "त्रुटी: अवैध इनपुट"
+
+#: venv/Lib/site-packages/click/termui.py:866
+msgid "Press any key to continue..."
+msgstr "सुरू ठेवण्यासाठी कोणतीही की दाबा..."
+
+#: venv/Lib/site-packages/click/types.py:332
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+"यामधून निवडा:\n"
+"\t{choices}"
+
+#: venv/Lib/site-packages/click/types.py:369
+#, python-brace-format
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] "{value!r} हे {choice} नाही."
+msgstr[1] "{value!r} हे {choices} पैकी नाही."
+
+#: venv/Lib/site-packages/click/types.py:460
+#, python-brace-format
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] "{value!r} हा {format} फॉरमॅटशी जुळत नाही."
+msgstr[1] "{value!r} हे {formats} फॉरमॅट्सशी जुळत नाही."
+
+#: venv/Lib/site-packages/click/types.py:482
+#, python-brace-format
+msgid "{value!r} is not a valid {number_type}."
+msgstr "{value!r} वैध {number_type} नाही."
+
+#: venv/Lib/site-packages/click/types.py:538
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr "{value} हा {range} रेंजमध्ये नाही."
+
+#: venv/Lib/site-packages/click/types.py:679
+#, python-brace-format
+msgid "{value!r} is not a valid boolean."
+msgstr "{value!r} वैध बूलियन नाही."
+
+#: venv/Lib/site-packages/click/types.py:703
+#, python-brace-format
+msgid "{value!r} is not a valid UUID."
+msgstr "{value!r} वैध UUID नाही."
+
+#: venv/Lib/site-packages/click/types.py:893
+msgid "file"
+msgstr "फाइल"
+
+#: venv/Lib/site-packages/click/types.py:895
+msgid "directory"
+msgstr "डिरेक्टरी"
+
+#: venv/Lib/site-packages/click/types.py:897
+msgid "path"
+msgstr "पथ"
+
+#: venv/Lib/site-packages/click/types.py:944
+#, python-brace-format
+msgid "{name} {filename!r} does not exist."
+msgstr "{name} {filename!r} अस्तित्वात नाही."
+
+#: venv/Lib/site-packages/click/types.py:953
+#, python-brace-format
+msgid "{name} {filename!r} is a file."
+msgstr "{name} {filename!r} ही फाइल आहे."
+
+#: venv/Lib/site-packages/click/types.py:961
+#, python-brace-format
+msgid "{name} {filename!r} is a directory."
+msgstr "{name} {filename!r} ही डिरेक्टरी आहे."
+
+#: venv/Lib/site-packages/click/types.py:970
+#, python-brace-format
+msgid "{name} {filename!r} is not readable."
+msgstr "{name} {filename!r} वाचता येत नाही."
+
+#: venv/Lib/site-packages/click/types.py:979
+#, python-brace-format
+msgid "{name} {filename!r} is not writable."
+msgstr "{name} {filename!r} लिहिता येत नाही."
+
+#: venv/Lib/site-packages/click/types.py:988
+#, python-brace-format
+msgid "{name} {filename!r} is not executable."
+msgstr "{name} {filename!r} चालवता येत नाही."
+
+#: venv/Lib/site-packages/click/types.py:1055
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] "{len_type} मूल्यांची आवश्यकता आहे, परंतु {len_value} दिली गेली."
+msgstr[1] "{len_type} मूल्यांची आवश्यकता आहे, परंतु {len_value} दिल्या गेल्या."
+

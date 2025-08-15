@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>My Cart | KrishiLink</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="bg-light">
+        <nav
+            class="navbar navbar-expand-lg navbar-dark"
+            style="background-color: #2e7d32"
+        >
+            <div class="container">
+                <a
+                    class="navbar-brand d-flex align-items-center"
+                    href="{{ url_for('home') }}"
+                >
+                    <img
+                        src="{{ url_for('static', filename='images/logo.png') }}"
+                        alt="{{ _('KrishiLink Logo') }}"
+                        height="70"
+                        class="me-2"
+                    />
+                    <span class="fw-bold text-white"
+                        >{{ _('KrishiLink') }}</span
+                    >
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="{{ _('Toggle navigation') }}"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div
+                    class="collapse navbar-collapse justify-content-end"
+                    id="navbarNav"
+                >
+                    <ul class="navbar-nav align-items-center">
+                        <!-- SEARCH BAR -->
+                        <li class="nav-item mb-2 me-2">
+                            <form
+                                method="get"
+                                action="{{ url_for('buyer_dashboard') }}"
+                                class="d-flex"
+                                role="search"
+                            >
+                                <input
+                                    class="form-control me-2"
+                                    type="search"
+                                    name="search"
+                                    placeholder="{{ _('Search crops...') }}"
+                                    aria-label="{{ _('Search') }}"
+                                    value="{{ search_query }}"
+                                />
+                                <button class="btn btn-light" type="submit">
+                                    {{ _('Search') }}
+                                </button>
+                            </form>
+                        </li>
+
+                        <!-- Wallet Balance -->
+                        <li class="nav-item mb-2 me-2">
+                            <a
+                                href="#"
+                                class="btn btn-light border rounded-pill d-flex align-items-center px-3 py-1"
+                                data-bs-toggle="modal"
+                                data-bs-target="#walletModal"
+                                style="font-weight: 500; color: #2e7d32"
+                            >
+                                💰
+                                <span class="ms-1"
+                                    >₹{{ "%.2f"|format(user.wallet) }}</span
+                                >
+                            </a>
+                        </li>
+
+                        <!-- Notifications -->
+                        <li class="nav-item dropdown mb-2 me-2">
+                            <a
+                                class="nav-link position-relative"
+                                href="#"
+                                id="notificationsDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                🔔 {% set unread_count = notifications |
+                                selectattr("is_read", "equalto", False) | list |
+                                length %} {% if unread_count > 0 %}
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                >
+                                    {{ unread_count }}
+                                </span>
+                                {% endif %}
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="notificationsDropdown"
+                                style="min-width: 300px"
+                            >
+                                {% if notifications %} {% for notif in
+                                notifications[:5] %}
+                                <li
+                                    class="dropdown-item {% if not notif.is_read %}fw-bold{% endif %}"
+                                >
+                                    {{ notif.message }}
+                                    <br />
+                                    <small class="text-muted"
+                                        >{{ notif.created_at.strftime('%Y-%m-%d
+                                        %H:%M') }}</small
+                                    >
+                                </li>
+                                {% endfor %}
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <a
+                                        class="dropdown-item text-center"
+                                        href="{{ url_for('notifications') }}"
+                                    >
+                                        {{ _('View All') }}
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="dropdown-item text-muted">
+                                    {{ _('No notifications') }}
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                        <!-- Home Link -->
+                        <li class="nav-item mb-2 me-2">
+                            <a
+                                class="btn btn-outline-light"
+                                href="{{ url_for('buyer_dashboard') }}"
+                                >{{ _('🏠 Home') }}</a
+                            >
+                        </li>
+
+                        <!-- Cart -->
+                        <li class="nav-item mb-2 me-2">
+                            <a
+                                class="btn btn-outline-light"
+                                href="{{ url_for('view_cart') }}"
+                                >{{ _('🛒 Cart') }}</a
+                            >
+                        </li>
+
+                        <!-- Orders -->
+                        <li class="nav-item mb-2 me-2">
+                            <a
+                                class="btn btn-outline-light"
+                                href="{{ url_for('orders') }}"
+                                >{{ _('📦 Orders') }}</a
+                            >
+                        </li>
+
+                        <!-- Language Dropdown -->
+                        <li class="nav-item dropdown mb-2 me-2">
+                            <a
+                                class="btn btn-outline-light dropdown-toggle"
+                                href="#"
+                                id="languageDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                🌐 {{ _('Languages') }}
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="languageDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='en') }}"
+                                        >{{ _('English') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='hi') }}"
+                                        >{{ _('हिन्दी') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('set_language', lang_code='mr') }}"
+                                        >{{ _('मराठी') }}</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Profile Image Dropdown -->
+                        <li class="nav-item dropdown me-2 mb-2">
+                            <a
+                                class="nav-link dropdown-toggle d-flex align-items-center"
+                                href="#"
+                                id="profileDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <img
+                                    src="{{ url_for('static', filename=user.profile_image if user.profile_image else 'default_picture.png') }}"
+                                    class="rounded-circle me-1"
+                                    width="40"
+                                    height="40"
+                                    alt="{{ _('Profile') }}"
+                                />
+                            </a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="profileDropdown"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('complete_profile') }}"
+                                        >{{ _('Edit Profile') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ url_for('logout') }}"
+                                        >{{ _('Logout') }}</a
+                                    >
+                                </li>
+                                <li>
+                                    <form
+                                        id="removeImageForm"
+                                        action="{{ url_for('remove_profile_image') }}"
+                                        method="POST"
+                                        style="display: inline"
+                                    >
+                                        <button
+                                            type="button"
+                                            class="dropdown-item text-danger"
+                                            onclick="confirmImageRemoval()"
+                                        >
+                                            {{ _('Remove Profile Image') }}
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- CART CONTENT -->
+        <div class="container mt-4">
+            <h3 class="mb-4">{{ _('🛒 Your Cart') }}</h3>
+            {% if cart_items %}
+            <div class="table-responsive">
+                <table
+                    class="table table-bordered table-hover bg-white shadow-sm rounded"
+                >
+                    <thead class="table-success">
+                        <tr>
+                            <th>{{ _('Crop') }}</th>
+                            <th>{{ _('Price') }}</th>
+                            <th>{{ _('Quantity') }}</th>
+                            <th>{{ _('Total') }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>{{ item.crop.crop_name }}</td>
+                            <td>₹{{ item.crop.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>₹{{ item.crop.price * item.quantity }}</td>
+                            <td>
+                                <a
+                                    href="{{ url_for('remove_from_cart', cart_id=item.id) }}"
+                                    class="btn btn-danger btn-sm"
+                                    >{{ _('Remove') }}</a
+                                >
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <h4>{{ _('Total:') }} ₹{{ total_price }}</h4>
+                <form action="{{ url_for('checkout') }}" method="POST">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        {{ _('Checkout') }}
+                    </button>
+                </form>
+            </div>
+            {% else %}
+            <p class="text-muted">{{ _('Your cart is empty.') }}</p>
+            {% endif %}
+        </div>
+
+        <!-- FOOTER -->
+        <footer
+            class="text-center text-white bg-dark py-2 mt-5"
+            style="position: absolute; bottom: 0; width: 100%"
+        >
+            © 2025 {{ _('KrishiLink. All Rights Reserved.') }}
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function confirmImageRemoval() {
+                if (
+                    confirm(
+                        'Are you sure you want to remove your profile image?'
+                    )
+                ) {
+                    fetch(document.getElementById('removeImageForm').action, {
+                        method: 'POST',
+                    }).then((response) => {
+                        if (response.ok) {
+                            document.querySelector('#profileDropdown img').src =
+                                '/static/uploads/profile_pics/default_profile.png';
+                        } else {
+                            alert('Something went wrong.');
+                        }
+                    });
+                }
+            }
+        </script>
+    </body>
+</html>

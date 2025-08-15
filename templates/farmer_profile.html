@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ farmer.name }} | {{ _('KrishiLink') }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        />
+
+        <style>
+            body {
+                background-color: #f5f5f5;
+                font-family: 'Segoe UI', sans-serif;
+            }
+
+            .card {
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+
+            .card-body {
+                padding: 40px;
+            }
+
+            .btn-success {
+                background-color: #2e7d32;
+                border: none;
+            }
+
+            .btn-success:hover {
+                background-color: #256c28;
+            }
+
+            .profile-img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+            }
+
+            .farmer-name {
+                font-weight: 600;
+                font-size: 1.5rem;
+            }
+
+            .text-muted {
+                font-size: 0.9rem;
+            }
+
+            ul {
+                padding-left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Top Bar -->
+        <nav
+            class="navbar navbar-expand-lg navbar-dark"
+            style="background-color: #2e7d32"
+        >
+            <div class="container">
+                <a
+                    class="navbar-brand d-flex align-items-center"
+                    href="{{ url_for('home') }}"
+                >
+                    <img
+                        src="{{ url_for('static', filename='images/logo.png') }}"
+                        alt="{{ _('KrishiLink') }} Logo"
+                        height="70"
+                        class="me-2"
+                    />
+                    <span class="fw-bold text-white"
+                        >{{ _('KrishiLink') }}</span
+                    >
+                </a>
+            </div>
+        </nav>
+
+        <!-- Farmer Profile -->
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                {% if farmer.profile_image %}
+                                <img
+                                    src="{{ url_for('static', filename=farmer.profile_image or 'uploads/default_picture.jpg') }}"
+                                    alt="{{ _('Farmer') }}"
+                                    class="rounded-circle me-3 profile-img"
+                                />
+                                {% endif %}
+                                <div>
+                                    <h4 class="farmer-name">
+                                        {{ farmer.name }}
+                                    </h4>
+                                    <p class="text-muted">
+                                        {{ farmer.location }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {% if farmer.bio %}
+                            <p>
+                                <strong>{{ _('About:') }}</strong> {{ farmer.bio
+                                }}
+                            </p>
+                            {% endif %}
+
+                            <p>
+                                <strong>{{ _('Email:') }}</strong> {{
+                                farmer.email }}
+                            </p>
+                            <p>
+                                <strong>{{ _('Phone:') }}</strong> {{
+                                farmer.phone }}
+                            </p>
+                            <p>
+                                <strong>{{ _('Location / Address:') }}</strong>
+                                {{ farmer.location }}
+                            </p>
+
+                            <h5 class="mt-4">{{ _('Crops Posted:') }}</h5>
+                            {% if crops %}
+                            <ul>
+                                {% for crop in crops %}
+                                <li>
+                                    {{ crop.crop_name }} - ₹{{ crop.price }} ({{
+                                    crop.quantity }} kg)
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <p class="text-muted">
+                                {{ _('No crops available right now.') }}
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER -->
+        <footer
+            class="text-center text-white bg-dark py-2 mt-5"
+            style="position: absolute; bottom: 0; width: 100%"
+        >
+            © 2025 {{ _('KrishiLink. All Rights Reserved.') }}
+        </footer>
+
+        <!-- Bootstrap Script -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
