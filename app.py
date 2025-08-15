@@ -17,7 +17,8 @@ app.secret_key = 'krishilink_secret_key_123'
 # i18n Configuration
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'hi', 'mr']
-app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+babel = Babel(app)
+
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = os.path.join('static', 'uploads', 'profile_pics')
@@ -25,9 +26,6 @@ app.config['UPLOAD_FOLDER'] = os.path.join('static', 'uploads', 'profile_pics')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-babel = Babel(app)
 
 
 # Database Configuration
