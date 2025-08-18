@@ -83,22 +83,14 @@ from sqlalchemy import func
 @app.route('/forgot_password', methods=['POST'])
 def forgot_password_submit():
     data = request.get_json()
-    print("📩 Raw data from request:", data)
-
     email = data.get('email', '').strip().lower()
-    print("🔍 Normalized email:", email)
-
     user = User.query.filter(func.lower(User.email) == email).first()
-    print("👤 Found user:", user)
-
     if not user:
         return jsonify({"success": False, "message": "No account found with that email."}), 400
 
     # Store password directly (matches your current login check)
     user.password = data.get('new_password', '').strip()
     db.session.commit()
-
-    print("✅ Password updated successfully for:", email)
     return jsonify({"success": True, "message": "Password updated successfully."}), 200
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -155,11 +147,11 @@ def complete_profile():
         user.location = request.form['location']
         user.pincode = request.form.get('pincode')
 
-        # ✅ Always overwrite city with fresh value
-        city = get_city_from_address(user.location)
-        if not city:  
-            city = request.form.get('city')  # fallback from form
-        if city:  
+        # ✅ Always overwrite city with fresh value (prefer pincode)
+        city = get_city_from_address(pincode=user.pincode, address=user.location)
+        if not city:
+            city = request.form.get('city')  # manual fallback
+        if city:
             user.city = city.strip()
 
         file = request.files.get('profile_image')
@@ -180,6 +172,23 @@ def complete_profile():
             user.land_size = request.form.get('land_size')
             user.farm_type = request.form.get('farm_type')
 
+            # 🔁 🔁 🔁  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            # ✅ SYNC ALL EXISTING CROPS WITH THE NEW FARMER ADDRESS
+            # (No schema changes: only update fields that exist on Crop)
+            from models import Crop
+            updates = {}
+            if hasattr(Crop, 'city') and user.city:
+                updates['city'] = user.city
+            if hasattr(Crop, 'location') and user.location:
+                updates['location'] = user.location
+            if hasattr(Crop, 'pincode') and user.pincode:
+                updates['pincode'] = user.pincode
+
+            if updates:
+                # bulk update; no need to load each crop row
+                Crop.query.filter_by(user_id=user.id).update(updates, synchronize_session=False)
+            # 🔁 🔁 🔁  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
         if user.role == 'buyer':
             user.company_name = request.form.get('company_name')
             user.business_type = request.form.get('business_type')
@@ -189,10 +198,11 @@ def complete_profile():
             user.other_crops = other_crops_input
 
         user.is_profile_complete = True
-        db.session.commit()
 
-        # ✅ Refresh session to avoid stale user.city
-        session['user_id'] = user.id  
+        # ✅ Single commit persists both user + crops sync
+        db.session.commit()
+        db.session.refresh(user)
+        session['user_id'] = user.id  # refresh session
 
         add_notification(user.id, "Your profile has been completed successfully.")
         alert_script = "<script>alert('Profile completed successfully!');</script>"
@@ -400,16 +410,11 @@ def buyer_dashboard():
     # Base query: available crops in user's current city
     from sqlalchemy import func
 
-    # Base query: available crops (filter by city only if buyer has a city)
-    base_query = Crop.query.join(User, Crop.user_id == User.id).filter(
-        Crop.status == "available"
+    base_query = Crop.query.filter(
+        Crop.status == "available",
+        Crop.city.isnot(None),
+        func.lower(func.trim(Crop.city)) == func.lower(func.trim(user.city))
     )
-
-    if user.city:  # only filter if buyer's city is set
-        base_query = base_query.filter(
-            func.lower(User.city) == func.lower(user.city)
-        )
-
 
     # Apply search filter if present
     if search_query:
@@ -419,6 +424,10 @@ def buyer_dashboard():
                 Crop.description.ilike(f"%{search_query}%")
             )
         )
+
+    print("👤 Buyer city:", user.city)
+    for c in base_query.all():
+        print("🌱 Crop:", c.crop_name, "| Farmer city:", c.user.city)
 
     preferred_crops = []
     other_crops = []
@@ -522,8 +531,10 @@ def add_crop():
             image=image_path,
             description=description,
             delivery_method=delivery_method,
+            city=farmer_city  # ✅ save farmer’s city with crop
         )
 
+        print("DEBUG /add_crop: farmer.city =", farmer.city)
         db.session.add(new_crop)
         db.session.commit()
         return redirect(url_for('farmer_dashboard'))

@@ -51,12 +51,31 @@ def get_weather_by_pincode(pincode):
         print("Weather error:", e)
         return "⚠ Weather data could not be fetched.", None
 
-def get_city_from_address(address):
-    url = f"https://api.opencagedata.com/geocode/v1/json?q={address}&key={OPENCAGE_API_KEY}"
+
+def get_city_from_address(pincode=None, address=None):
+    query = None
+    if pincode:  # ✅ Prefer pincode if available
+        query = str(pincode)
+    elif address:
+        query = address
+
+    if not query:
+        return None
+
+    url = f"https://api.opencagedata.com/geocode/v1/json?q={query}&key={OPENCAGE_API_KEY}"
     response = requests.get(url)
     data = response.json()
 
     if data.get("results"):
         components = data["results"][0]["components"]
-        return components.get("city") or components.get("town") or components.get("village")
+        city = (
+            components.get("city")
+            or components.get("town")
+            or components.get("village")
+            or components.get("municipality")
+            or components.get("state_district")
+        )
+        if city and "taluk" in city.lower():
+            city = city.replace("taluk", "").strip()
+        return city
     return None

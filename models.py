@@ -38,7 +38,7 @@ class Crop(db.Model):
     description = db.Column(db.Text)
     delivery_method = db.Column(db.String(50))  # 'farmer_delivers' or 'buyer_pickup' 
     user = db.relationship('User', back_populates="crops")
-
+    city = db.Column(db.String(100))
 User.crops = db.relationship('Crop', back_populates='user')
 
 
