@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-15 14:52+0530\n"
+"POT-Creation-Date: 2025-08-18 10:44+0530\n"
 "PO-Revision-Date: 2025-08-15 14:52+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: hi\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: templates/edit_crop.html:58 templates/farmer_dashboard.html:31
 #: templates/farmer_profile.html:5 templates/farmer_profile.html:71
 #: templates/farmer_profile.html:76 templates/forgot_password.html:75
-#: templates/index.html:7 templates/index.html:36 templates/index.html:278
+#: templates/index.html:7 templates/index.html:36 templates/index.html:287
 #: templates/login.html:5 templates/login.html:83 templates/login.html:88
 #: templates/notifications.html:148 templates/orders.html:31
 #: templates/payment.html:7 templates/payment.html:69 templates/payment.html:74
@@ -37,9 +37,10 @@ msgstr "कृषिलिंक"
 #: templates/add_crop.html:77 templates/buyer_dashboard.html:41
 #: templates/cart.html:41 templates/complete_profile.html:51
 #: templates/edit_crop.html:69 templates/farmer_dashboard.html:43
-#: templates/login.html:98 templates/notifications.html:158
-#: templates/orders.html:42 templates/payment.html:84
-#: templates/register.html:110 templates/search_results.html:57
+#: templates/forgot_password.html:85 templates/login.html:98
+#: templates/notifications.html:158 templates/orders.html:42
+#: templates/payment.html:84 templates/register.html:110
+#: templates/search_results.html:57
 msgid "Toggle navigation"
 msgstr "नेविगेशन बदलें"
 
@@ -67,6 +68,7 @@ msgstr "होम"
 #: templates/add_crop.html:177 templates/buyer_dashboard.html:179
 #: templates/cart.html:181 templates/complete_profile.html:58
 #: templates/edit_crop.html:145 templates/farmer_dashboard.html:143
+#: templates/forgot_password.html:104 templates/index.html:98
 #: templates/login.html:116 templates/notifications.html:177
 #: templates/orders.html:186 templates/payment.html:102
 #: templates/register.html:129 templates/search_results.html:195
@@ -76,23 +78,28 @@ msgstr "भाषाएँ"
 #: templates/add_crop.html:187 templates/buyer_dashboard.html:189
 #: templates/cart.html:191 templates/complete_profile.html:61
 #: templates/edit_crop.html:148 templates/farmer_dashboard.html:153
-#: templates/notifications.html:187 templates/orders.html:196
-#: templates/payment.html:112 templates/register.html:139
-#: templates/search_results.html:205
+#: templates/forgot_password.html:114 templates/index.html:108
+#: templates/login.html:126 templates/notifications.html:187
+#: templates/orders.html:196 templates/payment.html:112
+#: templates/register.html:139 templates/search_results.html:205
 msgid "English"
 msgstr "अंग्रेज़ी"
 
 #: templates/add_crop.html:194 templates/buyer_dashboard.html:196
 #: templates/cart.html:198 templates/complete_profile.html:62
-#: templates/notifications.html:194 templates/orders.html:203
-#: templates/payment.html:119 templates/register.html:146
+#: templates/forgot_password.html:121 templates/index.html:115
+#: templates/login.html:133 templates/notifications.html:194
+#: templates/orders.html:203 templates/payment.html:119
+#: templates/register.html:146
 msgid "हिन्दी"
 msgstr "हिन्दी"
 
 #: templates/add_crop.html:201 templates/buyer_dashboard.html:203
 #: templates/cart.html:205 templates/complete_profile.html:63
-#: templates/notifications.html:201 templates/orders.html:210
-#: templates/payment.html:126 templates/register.html:153
+#: templates/forgot_password.html:128 templates/index.html:122
+#: templates/login.html:140 templates/notifications.html:201
+#: templates/orders.html:210 templates/payment.html:126
+#: templates/register.html:153
 msgid "मराठी"
 msgstr "मराठी"
 
@@ -184,12 +191,12 @@ msgid "Add Crop"
 msgstr "फ़सल जोड़ें"
 
 #: templates/add_crop.html:411 templates/buyer_dashboard.html:554
-#: templates/buyer_profile.html:145 templates/cart.html:321
+#: templates/buyer_profile.html:145 templates/cart.html:324
 #: templates/complete_profile.html:200 templates/edit_crop.html:272
-#: templates/farmer_dashboard.html:580 templates/farmer_profile.html:148
-#: templates/forgot_password.html:155 templates/login.html:221
-#: templates/notifications.html:320 templates/orders.html:368
-#: templates/payment.html:221 templates/register.html:273
+#: templates/farmer_dashboard.html:579 templates/farmer_profile.html:151
+#: templates/forgot_password.html:215 templates/login.html:224
+#: templates/notifications.html:320 templates/orders.html:371
+#: templates/payment.html:222 templates/register.html:273
 #: templates/search_results.html:390
 msgid "KrishiLink. All Rights Reserved."
 msgstr "कृषिलिंक। सर्व अधिकार सुरक्षित।"
@@ -282,7 +289,7 @@ msgstr "अभी खरीदें"
 
 #: templates/buyer_dashboard.html:413 templates/buyer_dashboard.html:519
 #: templates/farmer_profile.html:92 templates/index.html:64
-#: templates/index.html:221 templates/orders.html:293 templates/orders.html:329
+#: templates/index.html:228 templates/orders.html:293 templates/orders.html:329
 #: templates/register.html:242 templates/search_results.html:357
 msgid "Farmer"
 msgstr "किसान"
@@ -302,9 +309,9 @@ msgid "No other crops available right now."
 msgstr "इस समय कोई अन्य फ़सल उपलब्ध नहीं है।"
 
 #: templates/buyer_profile.html:91 templates/buyer_profile.html:97
-#: templates/farmer_dashboard.html:445 templates/farmer_dashboard.html:495
-#: templates/farmer_dashboard.html:513 templates/index.html:69
-#: templates/index.html:245 templates/register.html:245
+#: templates/farmer_dashboard.html:444 templates/farmer_dashboard.html:494
+#: templates/farmer_dashboard.html:512 templates/index.html:69
+#: templates/index.html:252 templates/register.html:245
 msgid "Buyer"
 msgstr "खरीदार"
 
@@ -349,7 +356,7 @@ msgid "🛒 Your Cart"
 msgstr "🛒 आपका कार्ट"
 
 #: templates/cart.html:280 templates/farmer_dashboard.html:378
-#: templates/farmer_dashboard.html:492 templates/orders.html:288
+#: templates/farmer_dashboard.html:491 templates/orders.html:288
 msgid "Crop"
 msgstr "फ़सल"
 
@@ -357,7 +364,7 @@ msgstr "फ़सल"
 msgid "Price"
 msgstr "कीमत"
 
-#: templates/cart.html:282 templates/farmer_dashboard.html:493
+#: templates/cart.html:282 templates/farmer_dashboard.html:492
 #: templates/orders.html:289
 msgid "Quantity"
 msgstr "मात्रा"
@@ -619,7 +626,7 @@ msgstr "आपकी फ़सलें"
 msgid "Quantity (Kg)"
 msgstr "मात्रा (किलो में)"
 
-#: templates/farmer_dashboard.html:383 templates/farmer_dashboard.html:497
+#: templates/farmer_dashboard.html:383 templates/farmer_dashboard.html:496
 msgid "Actions"
 msgstr "क्रियाएँ"
 
@@ -639,43 +646,43 @@ msgstr "क्या आप वाकई इस फ़सल को हटान
 msgid "Delete"
 msgstr "हटाएँ"
 
-#: templates/farmer_dashboard.html:466
+#: templates/farmer_dashboard.html:465
 msgid "Buyer info not available"
 msgstr "खरीदार की जानकारी उपलब्ध नहीं"
 
-#: templates/farmer_dashboard.html:470
+#: templates/farmer_dashboard.html:469
 msgid "Not sold yet"
 msgstr "अभी तक नहीं बिका"
 
-#: templates/farmer_dashboard.html:478
+#: templates/farmer_dashboard.html:477
 msgid "No crops added yet."
 msgstr "अभी तक कोई फ़सल जोड़ी नहीं गई।"
 
-#: templates/farmer_dashboard.html:484
+#: templates/farmer_dashboard.html:483
 msgid "Pending Cash on Delivery Orders"
 msgstr "बकाया कैश ऑन डिलीवरी ऑर्डर"
 
-#: templates/farmer_dashboard.html:491 templates/orders.html:287
+#: templates/farmer_dashboard.html:490 templates/orders.html:287
 msgid "Order ID"
 msgstr "ऑर्डर आईडी"
 
-#: templates/farmer_dashboard.html:494 templates/orders.html:290
+#: templates/farmer_dashboard.html:493 templates/orders.html:290
 msgid "Total Price"
 msgstr "कुल कीमत"
 
-#: templates/farmer_dashboard.html:496 templates/orders.html:292
+#: templates/farmer_dashboard.html:495 templates/orders.html:292
 msgid "Order Date"
 msgstr "ऑर्डर की तारीख"
 
-#: templates/farmer_dashboard.html:548
+#: templates/farmer_dashboard.html:547
 msgid "Approve"
 msgstr "स्वीकृत करें"
 
-#: templates/farmer_dashboard.html:560
+#: templates/farmer_dashboard.html:559
 msgid "Reject"
 msgstr "अस्वीकृत करें"
 
-#: templates/farmer_dashboard.html:568
+#: templates/farmer_dashboard.html:567
 msgid "No pending orders."
 msgstr "कोई लंबित ऑर्डर नहीं।"
 
@@ -691,28 +698,28 @@ msgstr "डाली गई फ़सलें:"
 msgid "No crops available right now."
 msgstr "इस समय कोई फ़सल उपलब्ध नहीं।"
 
-#: templates/forgot_password.html:88
+#: templates/forgot_password.html:145
 msgid "Reset Your Password"
 msgstr "अपना पासवर्ड रीसेट करें"
 
-#: templates/forgot_password.html:94 templates/index.html:270
+#: templates/forgot_password.html:151 templates/index.html:277
 #: templates/login.html:170 templates/register.html:189
 msgid "Email"
 msgstr "ईमेल"
 
-#: templates/forgot_password.html:107
+#: templates/forgot_password.html:164
 msgid "New Password"
 msgstr "नया पासवर्ड"
 
-#: templates/forgot_password.html:122
+#: templates/forgot_password.html:179
 msgid "Confirm Password"
 msgstr "पासवर्ड पुष्टि करें"
 
-#: templates/forgot_password.html:138
+#: templates/forgot_password.html:195
 msgid "Change Password"
 msgstr "पासवर्ड बदलें"
 
-#: templates/forgot_password.html:145
+#: templates/forgot_password.html:202
 msgid "Back to Login"
 msgstr "लॉगिन पर वापस जाएँ"
 
@@ -728,45 +735,41 @@ msgstr "के बारे में"
 msgid "Contact"
 msgstr "संपर्क करें"
 
-#: templates/index.html:79 templates/index.html:136 templates/login.html:5
+#: templates/index.html:79 templates/index.html:143 templates/login.html:5
 #: templates/login.html:197
 msgid "Login"
 msgstr "लॉगिन"
 
-#: templates/index.html:84 templates/index.html:141 templates/register.html:6
+#: templates/index.html:84 templates/index.html:148 templates/register.html:6
 #: templates/register.html:255
 msgid "Register"
 msgstr "पंजीकरण करें"
 
-#: templates/index.html:95
-msgid "Language"
-msgstr "भाषा"
-
-#: templates/index.html:128
+#: templates/index.html:135
 msgid "Welcome to KrishiLink"
 msgstr "क्रिशिलिंक में आपका स्वागत है"
 
-#: templates/index.html:130
+#: templates/index.html:137
 msgid "Smart Crop Pre-Booking & Rain-Aware Deal Platform"
 msgstr "स्मार्ट क्रॉप प्री-बुकिंग और बारिश-सावधान डील प्लेटफ़ॉर्म"
 
-#: templates/index.html:158
+#: templates/index.html:165
 msgid "Farm Image 1"
 msgstr "खेत की तस्वीर 1"
 
-#: templates/index.html:165
+#: templates/index.html:172
 msgid "Farm Image 2"
 msgstr "खेत की तस्वीर 2"
 
-#: templates/index.html:172
+#: templates/index.html:179
 msgid "Farm Image 3"
 msgstr "खेत की तस्वीर 3"
 
-#: templates/index.html:197
+#: templates/index.html:204
 msgid "About KrishiLink"
 msgstr "क्रिशिलिंक के बारे में"
 
-#: templates/index.html:199
+#: templates/index.html:206
 msgid ""
 "KrishiLink connects farmers and buyers through a smart\n"
 "                    pre-harvest booking system. With rain forecasting "
@@ -780,15 +783,15 @@ msgstr ""
 "सिस्टम के साथ, यह फ़सल नुकसान को कम करता है और सुचारु लेनदेन सुनिश्चित "
 "करता है।"
 
-#: templates/index.html:211
+#: templates/index.html:218
 msgid "Who Can Use KrishiLink?"
 msgstr "क्रिशिलिंक कौन उपयोग कर सकता है?"
 
-#: templates/index.html:225
+#: templates/index.html:232
 msgid "For Farmers"
 msgstr "किसानों के लिए"
 
-#: templates/index.html:228
+#: templates/index.html:235
 msgid ""
 "Farmers can list upcoming crops,\n"
 "                                    accept pre-bookings, and receive "
@@ -804,11 +807,11 @@ msgstr ""
 "पर निर्भरता और बारिश से होने वाले नुकसान के जोखिम को कम करने में मदद करता"
 " है।"
 
-#: templates/index.html:249
+#: templates/index.html:256
 msgid "For Buyers"
 msgstr "खरीदारों के लिए"
 
-#: templates/index.html:252
+#: templates/index.html:259
 msgid ""
 "Buyers get direct access to crops\n"
 "                                    before they hit the market. Filter by"
@@ -823,15 +826,15 @@ msgstr ""
 "हार्वेस्ट विंडो या कीमत द्वारा फ़िल्टर करें और डील पहले ही लॉक करें। "
 "रियल-टाइम अपडेट और वॉलेट एकीकरण शामिल है।"
 
-#: templates/index.html:268
+#: templates/index.html:275
 msgid "Contact Us"
 msgstr "हमसे संपर्क करें"
 
-#: templates/index.html:270 templates/register.html:202
+#: templates/index.html:279 templates/register.html:202
 msgid "Phone"
 msgstr "फ़ोन"
 
-#: templates/index.html:278
+#: templates/index.html:287
 msgid "All Rights Reserved."
 msgstr "सर्वाधिकार सुरक्षित।"
 
@@ -943,23 +946,23 @@ msgstr "नकद भुगतान पर डिलीवरी"
 msgid "Pay Now"
 msgstr "अभी भुगतान करें"
 
-#: templates/payment.html:238
+#: templates/payment.html:240
 msgid "Enter your UPI ID (mock):"
 msgstr "अपना यूपीआई आईडी दर्ज करें (मॉक):"
 
-#: templates/payment.html:240
+#: templates/payment.html:242
 msgid "UPI ID is required!"
 msgstr "यूपीआई आईडी आवश्यक है!"
 
-#: templates/payment.html:258
+#: templates/payment.html:260
 msgid "Transaction ID:"
 msgstr "लेनदेन आईडी:"
 
-#: templates/payment.html:265
+#: templates/payment.html:267
 msgid "Payment failed:"
 msgstr "भुगतान असफल:"
 
-#: templates/payment.html:268
+#: templates/payment.html:270
 msgid "Error:"
 msgstr "त्रुटि:"
 
@@ -1310,4 +1313,7 @@ msgid "{len_type} values are required, but {len_value} was given."
 msgid_plural "{len_type} values are required, but {len_value} were given."
 msgstr[0] "{len_type} मान आवश्यक हैं, लेकिन {len_value} दिए गए।"
 msgstr[1] "{len_type} मान आवश्यक हैं, लेकिन {len_value} दिए गए।"
+
+#~ msgid "Language"
+#~ msgstr "भाषा"
 
