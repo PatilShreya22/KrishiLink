@@ -17,8 +17,7 @@ app.secret_key = 'krishilink_secret_key_123'
 # i18n Configuration
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'hi', 'mr']
-babel = Babel(app)
-
+app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = os.path.join('static', 'uploads', 'profile_pics')
@@ -26,6 +25,9 @@ app.config['UPLOAD_FOLDER'] = os.path.join('static', 'uploads', 'profile_pics')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+babel = Babel(app)
 
 
 # Database Configuration
@@ -153,7 +155,8 @@ def complete_profile():
         user.phone = phone
         user.location = request.form['location']
         user.pincode = request.form.get('pincode')
-        user.city = get_city_from_address(user.location)
+        city = get_city_from_address(user.location)
+        user.city = city if city else request.form.get('city')
 
         file = request.files.get('profile_image')
         if file and allowed_file(file.filename):
@@ -390,10 +393,18 @@ def buyer_dashboard():
     search_query = request.args.get('search', '').strip()
 
     # Base query: available crops in user's current city
+    from sqlalchemy import func
+
+    # Base query: available crops (filter by city only if buyer has a city)
     base_query = Crop.query.join(User, Crop.user_id == User.id).filter(
-        Crop.status == "available",
-        User.city == user.city
+        Crop.status == "available"
     )
+
+    if user.city:  # only filter if buyer's city is set
+        base_query = base_query.filter(
+            func.lower(User.city) == func.lower(user.city)
+        )
+
 
     # Apply search filter if present
     if search_query:
@@ -939,7 +950,7 @@ def set_language(lang_code):
     if lang_code in app.config['BABEL_SUPPORTED_LOCALES']:
         resp = make_response(redirect(request.referrer or url_for('home')))
         # cookie valid for 30 days
-        resp.set_cookie('lang', lang_code, max_age=30*24*60*60, secure=True, samesite='Lax')
+        resp.set_cookie('lang', lang_code, max_age=30*24*60*60)
         return resp
     return redirect(request.referrer or url_for('home'))
 
@@ -983,6 +994,5 @@ with app.app_context():
     db.create_all()
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-
+if __name__ == '__main__':
+    app.run(debug=True)
