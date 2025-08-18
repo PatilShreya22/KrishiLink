@@ -136,7 +136,6 @@ def register():
 
     return render_template('register.html', alert_script=alert_script)
 
-
 @app.route('/complete_profile', methods=['GET', 'POST'])
 def complete_profile():
     user_id = session.get('user_id')
@@ -155,8 +154,13 @@ def complete_profile():
         user.phone = phone
         user.location = request.form['location']
         user.pincode = request.form.get('pincode')
+
+        # ✅ Always overwrite city with fresh value
         city = get_city_from_address(user.location)
-        user.city = city if city else request.form.get('city')
+        if not city:  
+            city = request.form.get('city')  # fallback from form
+        if city:  
+            user.city = city.strip()
 
         file = request.files.get('profile_image')
         if file and allowed_file(file.filename):
@@ -164,7 +168,6 @@ def complete_profile():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             user.profile_image = f'uploads/profile_pics/{filename}'
-            db.session.commit()
 
         if user.role == 'farmer':
             bank_account = request.form.get('bank_account')
@@ -188,9 +191,11 @@ def complete_profile():
         user.is_profile_complete = True
         db.session.commit()
 
-        # Success notification (optional alert)
-        alert_script = "<script>alert('Profile completed successfully!');</script>"
+        # ✅ Refresh session to avoid stale user.city
+        session['user_id'] = user.id  
+
         add_notification(user.id, "Your profile has been completed successfully.")
+        alert_script = "<script>alert('Profile completed successfully!');</script>"
         return redirect(url_for('farmer_dashboard') if user.role == 'farmer' else url_for('buyer_dashboard'))
 
     return render_template('complete_profile.html', user=user, alert_script=alert_script)
